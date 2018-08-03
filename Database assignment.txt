@@ -1,0 +1,108 @@
+1. (a)    select COUNT(*) from tblEmp;
+   (b)    select min(moSalary) from tblEmp;
+   (c)    select count(distinct ntLevel) from tblEmp;
+
+//combining
+
+select COUNT(*)as TotalEmployees ,min(moSalary) as MinSalary,
+count(distinct ntLevel) as Total_Distinct_ntLevel from tblEmp;
+
+
+
+2.      SELECT E.[ntEmpID], E.[vcName],E.[vcMobieNumer]
+		FROM tblEmp as E;
+
+
+
+3. (a)    select * from tblEmp where vcMobieNumer is null AND ntLevel=1;
+   (b)    select * from tblEmp where ntLevel=0;
+
+
+//combining
+
+
+IF ((select distinct ntLevel from tblEmp where vcMobieNumer is null AND ntLevel=1) >0)
+BEGIN
+   select * from tblEmp where vcMobieNumer is null AND ntLevel=1
+END
+ELSE
+BEGIN
+    select * from tblEmp where ntLevel=0
+END
+
+
+
+4.       select *
+		,case when vcSkills like '%Java%' then 1
+         
+		end as [priority]
+		from tblEmp 
+		order by [priority] desc;
+
+
+
+
+
+
+
+
+5. Explain the TOP clause in the following sql queries?
+    
+    a. SELECT TOP(1) * FROM tblEmp 
+	
+Ans: It will return the top 'n' rows of the result set retrieved, 'n' being the number specified inside
+	the Top clause.
+		For example, TOP(10) would return the top 10 rows of the full result set.
+		
+    b. SELECT TOP(SELECT 3/2) * FROM tblEmp 
+	
+Ans: It will return the top 'n' rows of the result set retrieved, 'n' being converted into integer first
+	and specified inside the Top clause.
+		For example, TOP(10/3) would return the top (10/3) = 3 rows of the full result set.
+	
+    c. SELECT TOP(1) PERCENT * FROM tblEmp
+	
+Ans: It will return the top rows of the result set retrieved based on percentage, 'n' being the percentage
+	specified inside the Top clause.
+		For example, TOP(10) PERCENT would return the top 10% rows of the full result set.
+		
+    d. SELECT TOP(1) WITH TIES * FROM tblEmp ORDER BY vcName
+	
+Ans: TOP clause is commonly used to get top required rows from a result set,also it can be used with
+	 WITH TIES clause, to retrieve all similar rows to base result set.	
+
+
+
+
+
+6. When I executed this query:
+           
+   SELECT [vcName],[vcMobieNumer] FROM [dbo].[tblEmp] GROUP BY [vcName]
+
+Ans: The column names in SELECT clause and GROUP BY clause should be same.
+		two ways to correct this query:
+	(a) Remove [vcMobieNumer] from SELECT clause
+	(b) Add [vcMobieNumer] into GROUP By clause
+
+
+7.      SELECT vcName,ntLevel  FROM tblEmp where moSalary>(select AVG(moSalary) from tblEmp) ;
+
+
+
+8.      select * from HumanResources.Employee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
