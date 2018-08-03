@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <title>jQuery validation login basic example</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+   <meta name="viewport" content="width=device-width"/>
+   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+   <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+   <script>
+     // Configuration
+         			   
+		
+         jQuery.validator.setDefaults({
+            debug: true,      //Avoids form submit. Comment when in production.
+            success: "valid",
+            submitHandler: function() {
+               alert("Success! The form can be successfully submitted!");
+            }
+         });
+		 
+		 
+      $(document).ready(function() {
+         // validate signup form on keyup and submit
+		 jQuery.validator.addMethod("lettersonly", function(value, element) {
+  return this.optional(element) || /^[a-z]+$/i.test(value);
+}); 
+
+
+         $("#signupForm").validate({
+            rules: {
+              
+			   first: {
+                  required: true,
+				  lettersonly: true 
+               },
+			   middle: {
+				  lettersonly: true 
+               },
+			   last: {
+                  required: true,
+				  lettersonly: true 
+               },
+			   email: {
+                  required: true,
+               },
+			   phone: {
+                  required: true,
+				  minlength: 10,
+                  maxlength: 10
+               },
+               password: {
+                  required: true,
+                  minlength: 8,
+               },
+			   dob: {
+                  required: true,
+	
+               },
+			   gender: {
+                  required: true,
+			
+               },
+			   currAddr: {
+                  required: true,
+               },
+			   permAddr: {
+                  required: true,
+               },
+			   city: {
+                  required: true,
+				  lettersonly: true 
+               },
+			   state: {
+                  required: true,
+				  lettersonly: true 
+               },
+			   zip: {
+                  required: true,
+				    minlength: 6,
+                  maxlength: 6
+			
+               },
+            },
+            messages: {
+              
+			   first: {
+                  required: "firstname required",
+				  lettersonly: "Enter alphabets only"
+               },
+			   middle: {
+				  lettersonly: "Enter alphabets only"
+               },
+			   last: {
+                  required: "lastname required",
+				  lettersonly: "Enter alphabets only"
+               },
+			   email: {
+                  required: "email can't be empty",
+               },
+			   phone: {
+                  required: "phone number can't be empty",
+				  minlength: "phone number should be 10 digits",
+                  maxlength: "phone number should be 10 digits"
+               },
+               password: {
+                  required: "Password required",
+                  minlength: "password should contain min 8 characters",
+               },
+			   dob: {
+                  required: "dob required",
+			
+               },
+			   gender: {
+                  required: "Please select a gender",
+		
+               },
+			   currAddr: {
+                  required: "required",
+               },
+			   permAddr: {
+                  required: "required",
+               },
+			   city: {
+                  required: "Enter a valid City name",
+				  lettersonly: "Enter alphabets only"
+               },
+			   state: {
+                  required: "Enter a valid State name",
+				  lettersonly: "Enter alphabets only"
+               },
+			   zip: {
+                  required: "Enter a valid 6 digit zip code",
+				  minlength: "Zip should be 6 digit number",
+                  maxlength: "Zip should be 6 digit number"
+               },
+            }
+         });
+      });
+   </script>
+   <style>
+input[type=date] {
+	width:20%;
+	margin:2px 40px;
+    padding: 12px 20px;
+    border-radius: 5px;
+	border: none;
+    box-sizing: border-box;
+}
+
+input[type=submit]:hover {
+    background-color: #007c06;
+}
+input[type=submit]
+{
+	width:20%;
+	background-color: #01b20a;
+	color: white;
+	 border-radius: 10px;
+	padding: 14px 20px;
+	border: none;
+	cursor: pointer;
+}
+.key{
+	margin-left:40px;	
+}
+
+.round:focus{
+background-color:#febfff;	
+}
+.round:hover{	
+    border: 1px solid red;
+}
+.round {
+	width:25%;
+	margin:2px 40px;
+    padding: 12px 20px;
+    border-radius: 5px;
+	  border: 1px solid white;
+    box-sizing: border-box;
+}
+.addr:focus{
+background-color:#febfff;	
+}
+.addr:hover{
+border-radius: 5px;
+    border: 1px solid red;
+
+}
+
+.addr{
+border-radius: 5px;
+margin:2px 40px;
+   height: 75px; width:30%
+}
+
+body{
+background-image:url(hey.jpg);
+background-size: cover;
+ font-family: 'Varela Round', sans-serif;
+margin-left:200px;
+margin-top:50px;
+}
+
+label.error {
+  color: red;
+   font-family: 'Quattrocento Sans', sans-serif;
+}
+</style>
+   </head>
+<body>
+<!---------------------------------------------------------------------------------->
+<h3>  
+<div id="full-form">
+  <form id="signupForm">
+   
+         
+		<!---------------------------------->
+			
+
+<div class="key"><span class="label">  </span>First Name</div>
+<input type="text" class="round" name="first"><br><br>
+<div class="key"><span class="label">  </span>Middle Name</div>
+<input type="text" class="round" name="middle"><br><br>
+<div class="key"><span class="label">  </span>Last Name</div>
+<input type="text" class="round" name="last"><br><br><br>
+<div class="key"><span class="label">  </span>Email</div>
+<input type="email" class="round" name="email"><br><br><br>
+<div class="key"><span class="label">  </span>Phone Number</div>
+<input type="number" class="round" name="phone"><br><br><br>
+<div class="key"><span class="label">  </span>Password</div>
+<input type="password" class="round" name="password"><br><br><br>
+<div class="key"><span class="label">  </span>Date Of Birth</div>
+<input type="date" name="dob"><br><br><br>
+<div class="key"><span class="label">  </span>Gender</div>
+<br>
+<div class="key"><span class="label">  </span>Male
+<input type="radio" name="gender" value="Male">
+<span class="label">  </span>Female
+<input type="radio" name="gender" value="Female"></div><br><br>
+<div class="key"><span class="label">  </span>Current Address</div>
+
+<textarea name="currAddr" class="addr" rows="4" cols="25"></textarea><br><br><br>
+<div class="key"><span class="label">  </span>Permanent Address</div>
+
+<textarea name="permAddr" class="addr" rows="3" cols="40"></textarea><br><br><br>
+<div class="key"><span class="label">  </span>City</div>
+<input type="text" class="round" name="city"><br><br>
+<div class="key"><span class="label">  </span>State</div>
+<input type="text" class="round" name="state"><br><br>
+<div class="key"><span class="label">  </span>Zip Code</div>
+<input type="number" class="round" name="zip"><br><br><br>
+<div class="key"><span class="label">  </span>Personal Interests</div>
+&nbsp;&nbsp;&nbsp;
+Sports<input type="checkbox" name="interests" value="sports">
+Books<input type="checkbox" name="interests" value="sports">
+Computer & Software<input type="checkbox" name="interests" value="sports">
+Fashion<input type="checkbox" name="interests" value="sports">
+Photography<input type="checkbox" name="interests" value="sports"><br><br>
+
+<div class="key"><span class="label">  </span><input type="submit" class ="submit" value="Submit"></div>
+
+		<!---------------------------------->
+ 
+ 
+   </form>
+   </div>
+  <!------------------------------------------------------------------------------->
+</h3>
+
+  
+</html></body>
