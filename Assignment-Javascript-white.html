@@ -30,7 +30,7 @@ function validate()
 	if (firstname.value == "")								 
 	{
 		window.alert("Please enter your first name.");
-		
+		firstname.focus();
 		return false;
 	}
 	if(allLetter(firstname))
@@ -172,13 +172,13 @@ function validate()
 	if (enteredValue.value == "")								 
 	{
 		window.alert("Please enter result of Captcha.");
-		
+		enteredValue.focus();
 		return false;
 	}
 		if (enteredValue.value != res)								 
 	{
 		window.alert("Wrong answer of Captcha.");
-		
+		enteredValue.focus();
 		return false;
 	}
 	else
