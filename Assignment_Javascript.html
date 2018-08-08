@@ -61,18 +61,13 @@ function validate()
 		email.focus();
 		return false;
 	}
-	if (email.value.indexOf("@", 0) < 0)			 
+	var re = /\S+@\S+\.\S+/;
+	if(!(re.test(email)))
 	{
-		window.alert("Please enter a valid e-mail address.");
-		email.focus();
-		return false;
+	window.alert("Please fill Email correctly");
+	return false;
 	}
-	if (email.value.indexOf(".", 0) < 0)			 
-	{
-		window.alert("Please enter a valid e-mail address.");
-		email.focus();
-		return false;
-	}
+	
 	if (phone.value == "")						 
 	{
 		window.alert("Please enter your phone number.");
@@ -112,10 +107,10 @@ function validate()
                 if (gender[0].checked == true) 
 				{
                 } 
-				else if (gender[1].checked == true) 
+		else if (gender[1].checked == true) 
 				{
                 } 
-				else 
+		else 
 				{
                     window.alert("Please select your gender");
 				
