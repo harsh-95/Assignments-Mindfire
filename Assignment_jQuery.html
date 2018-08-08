@@ -8,107 +8,326 @@
  
   <script>
 $(document).ready(function() {
-$('#submit').click(function() {
 
-	var firstname =$("#first").val();
-	var middlename = $("#middle").val();
-	var lastname = $("#last").val();	
-	var email = $("#email").val();
-	var phone = $("#phone").val();
-	var password = $("#password").val();
-	var dob = $("#dob").val();
-	var gender = $("#gender").val();
-	var currAddr = $("#currAddr").val();
-	var permAddr = $("#permAddr").val();
-	var city1 = $("#city").val();
-	var state = $("#state").val();
-	var zip = $("#zip").val();
-	
-if(firstname =='')
+var reg = new RegExp("^[a-zA-Z]+$");
+var re = /\S+@\S+\.\S+/;
+
+var submit=false;
+
+ $("#first").blur(function(){
+ 	var firstname =$("#first").val();
+       
+			
+		if(firstname =='')
+		{
+		$("#error_first").text("Please fill First Name");
+		 $(this).css("background-color", "#ff9999");
+		 submit=false;
+		return false;
+		}
+		else if(!(reg.test(firstname)))
+		{
+		$("#error_first").text("Please enter only alphabets in First Name");
+		 $(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		else
+		{
+		$("#error_first").text("");
+		$(this).css("background-color", "white");    submit= true;
+		}
+  });
+  
+  
+   $("#middle").blur(function(){
+		var middlename = $("#middle").val();
+			
+		if(middlename.length!==0)
+		{
+		if(!(reg.test(middlename)))
+		{
+		$("#error_middle").text("Please enter only alphabets in Middle Name");
+		$(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		}
+		else
+		{
+		$("#error_middle").text("");
+		$(this).css("background-color", "white");    submit= true;
+		}
+  });
+  
+  
+   $("#last").blur(function(){
+ 	var lastname =$("#last").val();
+			
+		if(lastname =='')
+		{
+		$("#error_last").text("Please fill Last Name");
+		$(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		else if(!(reg.test(lastname)))
+		{
+		$("#error_last").text("Please enter only alphabets in Last Name");
+		$(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		else
+		{
+		$("#error_last").text("");
+		$(this).css("background-color", "white");    submit= true;
+		}
+  });
+
+  
+     $("#email").blur(function(){
+		var email = $("#email").val();
+        
+			
+		if(email =='')
+		{
+		$("#error_email").text("Please fill Email");
+		$(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		else if(!(re.test(email)))
+		{
+		$("#error_email").text("Please fill email correctly");
+		$(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		else
+		{
+		$("#error_email").text("");
+		$(this).css("background-color", "white");    submit= true;
+		}
+  });
+  
+  
+    $("#phone").blur(function(){
+		var phone = $("#phone").val();
+        
+			
+		if(phone =='')
+		{
+		$("#error_phone").text("Please fill Phone number");
+		$(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		else if(phone.length < 10 || phone.length > 10)
+		{
+		$("#error_phone").text("Please enter a valid 10 digit mobile number");
+		$(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		else
+		{
+		$("#error_phone").text("");
+		$(this).css("background-color", "white");    submit= true;
+		}
+  });
+  
+       $("#password").blur(function(){
+		var password = $("#password").val();
+        
+			
+		if(password =='')
+		{
+		$("#error_password").text("Please fill Password");
+		$(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		else if(password.length < 8)
+		{
+		$("#error_password").text("Please have min 8 characters in Password");
+		$(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		else
+		{
+		$("#error_password").text("");
+		$(this).css("background-color", "white");    submit= true;
+		}
+  });
+  
+  
+  
+   $("#dob").blur(function(){
+		var dob = $("#dob").val();
+        
+			
+		if(dob =='')
+		{
+		$("#error_dob").text("Please fill Date Of Birth");
+		$(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		else
+		{
+		$("#error_dob").text("");
+		$(this).css("background-color", "white");    submit= true;
+		}
+  });
+  
+  
+  
+  $("#gender").blur(function(){
+		var gender = $("#gender").val();
+        
+			
+		if(gender =='')
+		{
+		$("#error_gender").text("Please select your Gender");
+		$(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		else
+		{
+		$("#error_gender").text("");
+		$(this).css("background-color", "white");    submit= true;
+		}
+  }); 
+  
+  
+  $("#currAddr").blur(function(){
+		var currAddr = $("#currAddr").val();
+        
+			
+		if(currAddr =='')
+		{
+		$("#error_currAddr").text("Please enter Current Address");
+		$(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		else
+		{
+		$("#error_currAddr").text("");
+		$(this).css("background-color", "white");    submit= true;
+		}
+  });
+  
+  
+  $("#permAddr").blur(function(){
+		var permAddr = $("#permAddr").val();
+        
+			
+		if(permAddr =='')
+		{
+		$("#error_permAddr").text("Please enter Permanent Address");
+		$(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		else
+		{
+		$("#error_permAddr").text("");
+		$(this).css("background-color", "white");    submit= true;
+		}
+  });
+  
+  
+  $("#city").blur(function(){
+		var city1 = $("#city").val();
+        
+			
+		if(city1 =='')
+		{
+		$("#error_city").text("Please fill your city");
+		$(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		else if(!(reg.test(city1)))
+		{
+		$("#error_city").text("Please enter only alphabets in City");
+		$(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		else
+		{
+		$("#error_city").text("");
+		$(this).css("background-color", "white");    submit= true;
+		}
+  });
+  
+  
+  $("#state").blur(function(){
+		var state = $("#state").val();
+        
+			
+		if(state =='')
+		{
+		$("#error_state").text("Please fill your city");
+		$(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		else if(!(reg.test(state)))
+		{
+		$("#error_state").text("Please enter only alphabets in City");
+		$(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		else
+		{
+		$("#error_state").text("");
+		$(this).css("background-color", "white");    submit= true;
+		}
+  });
+  
+  
+  $("#zip").blur(function(){
+		var zip = $("#zip").val();
+        
+			
+		if(zip =='')
+		{
+		$("#error_zip").text("Please enter the Zip Code");
+		$(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		else if(zip.length < 6 || zip.length > 6)
+		{
+		$("#error_zip").text("Please enter a valid 6 digit zip code");
+		$(this).css("background-color", "#ff9999");
+		return false;
+		 submit=false;
+		}
+		else
+		{
+		$("#error_zip").text("");
+		$("#error_zip").text("");
+		$(this).css("background-color", "white");    submit= true;
+		}
+  });
+  
+  $('#submit').click(function() {
+
+if(submit === false)
 {
-alert("Please fill First Name");
 return false;
 }
-if(middlename =='')
+else
 {
-alert("Please fill Middle Name");
-return false;
-}
-if(lastname =='')
-{
-alert("Please fill Last Name");
-return false;
-}
-if(email =='')
-{
-alert("Please fill Email");
-return false;
-}
- var re = /\S+@\S+\.\S+/;
-if(!(re.test(email)))
-{
-alert("Please fill Email correctly");
-return false;
-}
-if(phone =='')
-{
-alert("Please fill Phone Number");
-return false;
-}
-else if(phone.length < 10 || phone.length > 10)
-{
-alert("Please enter a valid 10 digit mobile number");
-return false;
-}
-if(password =='')
-{
-alert("Please fill Password");
-return false;
-}
-else if(password.length < 8)
-{
-alert("Please have min 8 characters in Password");
-return false;
-}
-if(dob =='')
-{
-alert("Please fill Date Of Birth");
-return false;
-}
-if(gender =='')
-{
-alert("Please select your Gender");
-return false;
-}
-if(currAddr =='')
-{
-alert("Please fill your Current Address");
-return false;
-}
-if(permAddr =='')
-{
-alert("Please fill your Permanent Address");
-return false;
-}
-if(city1 =='')
-{
-alert("Please fill your city");
-return false;
-}
-if(state =='')
-{
-alert("Please fill State");
-return false;
-}
-if(zip =='')
-{
-alert("Please enter the Zip Code");
-return false;
-}
-else if(zip.length < 6 || zip.length > 6)
-{
-alert("Please enter a valid 6 digit zip code");
-return false;
+return true;
 }
 
 
@@ -184,7 +403,7 @@ margin-left:200px;
 margin-top:50px;
 }
 
-label.error {
+.error {
   color: red;
   font-family: 'Varela Round', sans-serif;
 }
@@ -194,52 +413,100 @@ label.error {
 <!---------------------------------------------------------------------------------->
 <h3>  
 <div id="full-form">
-  <form id="signupForm">
+  <form id="signupForm" method="post">
    
 
-<div class="key"><span class="label">  </span>First Name</div>
-<input type="text" class="round" id="first"><br><br>
-<div class="key"><span class="label">  </span>Middle Name</div>
-<input type="text" class="round" id="middle"><br><br>
-<div class="key"><span class="label">  </span>Last Name</div>
-<input type="text" class="round" id="last"><br><br><br>
-<div class="key"><span class="label">  </span>Email</div>
-<input type="email" class="round" id="email"><br><br><br>
-<div class="key"><span class="label">  </span>Phone Number</div>
-<input type="number" class="round" id="phone"><br><br><br>
-<div class="key"><span class="label">  </span>Password</div>
-<input type="password" class="round" id="password"><br><br><br>
-<div class="key"><span class="label">  </span>Date Of Birth</div>
-<input type="date" id="dob"><br><br><br>
-<div class="key"><span class="label">  </span>Gender</div>
-<br>
-<div class="key"><span class="label">  </span>Male
-&nbsp;&nbsp;&nbsp;
-<input type="radio" name="gender" id="gender" value="Male"><br>
-<span class="label">  </span>Female
-
-<input type="radio" name="gender" id="gender" value="Female"></div><br><br>
-<div class="key"><span class="label">  </span>Current Address</div>
-
-<textarea name="currAddr" class="addr" id="currAddr" rows="4" cols="25"></textarea><br><br><br>
-<div class="key"><span class="label">  </span>Permanent Address</div>
-
-<textarea name="permAddr" class="addr" id="permAddr" rows="3" cols="40"></textarea><br><br><br>
-<div class="key"><span class="label">  </span>City</div>
-<input type="text" class="round" id="city" name="city"><br><br>
-<div class="key"><span class="label">  </span>State</div>
-<input type="text" class="round" id="state" name="state"><br><br>
-<div class="key"><span class="label">  </span>Zip Code</div>
-<input type="number" class="round" id="zip" name="zip"><br><br><br>
-<div class="key"><span class="label">  </span>Personal Interests<br>
-<br>
-Sports<input type="checkbox" name="interests" value="sports">
-Books<input type="checkbox" name="interests" value="sports">
-Computer & Software<input type="checkbox" name="interests" value="sports">
-Fashion<input type="checkbox" name="interests" value="sports">
-Photography<input type="checkbox" name="interests" value="sports"><br><br>
+<div class="key">
+	<span class="label">  </span>First Name
 </div>
-<div class="key"><span class="label">  </span><input type="submit"  id="submit" value="Submit"></div>
+	<input type="text" class="round" id="first">
+	<span class="error" id="error_first">  </span><br><br>
+<div class="key">
+	<span class="label">  </span>Middle Name
+</div>
+	<input type="text" class="round" id="middle">
+	<span class="error" id="error_middle">  </span><br><br>
+<div class="key">
+	<span class="label">  </span>Last Name
+</div>
+	<input type="text" class="round" id="last">
+	<span class="error" id="error_last">  </span><br><br><br>
+<div class="key">
+	<span class="label">  </span>Email
+</div>
+	<input type="email" class="round" id="email">
+	<span class="error" id="error_email">  </span><br><br><br>
+<div class="key">
+	<span class="label">  </span>Phone Number
+</div>
+	<input type="number" class="round" id="phone">
+	<span class="error" id="error_phone">  </span><br><br><br>
+<div class="key">
+	<span class="label">  </span>Password
+</div>
+	<input type="password" class="round" id="password">
+	<span class="error" id="error_password">  </span><br><br><br>
+<div class="key">
+	<span class="label">  </span>Date Of Birth
+</div>
+	<input type="date" id="dob">
+	<span class="error" id="error_dob">  </span><br><br><br>
+<div class="key">
+	<span class="label">  </span>Gender
+</div>
+<br>
+<div class="key">
+		<span class="label">  </span>Male
+		&nbsp;&nbsp;&nbsp;
+		<input type="radio" name="gender" id="gender" value="Male">
+		<span class="error" id="error_gender">  </span><br>
+		<span class="label">  </span>Female
+		<input type="radio" name="gender" id="gender" value="Female">
+</div><br><br>
+<div class="key">
+	<span class="label">  </span>Current Address
+</div>
+
+	<textarea name="currAddr" class="addr" id="currAddr" rows="4" cols="25"></textarea>
+	<span class="error" id="error_currAddr">  </span><br><br><br>
+<div class="key">
+	<span class="label">  </span>Permanent Address
+</div>
+
+	<textarea name="permAddr" class="addr" id="permAddr" rows="3" cols="40"></textarea>
+	<span class="error" id="error_permAddr">  </span><br><br><br>
+<div class="key">
+	<span class="label">  </span>City
+</div>
+	<input type="text" class="round" id="city" name="city">
+	<span class="error" id="error_city">  </span><br><br>
+<div class="key">
+	<span class="label">  </span>State
+</div>
+	<input type="text" class="round" id="state" name="state">
+	<span class="error" id="error_state">  </span><br><br>
+<div class="key">
+	<span class="label">  </span>Zip Code
+</div>
+	<input type="number" class="round" id="zip" name="zip">
+	<span class="error" id="error_zip">  </span><br><br><br>
+<div class="key">
+	<span class="label">  </span>Personal Interests<br><br>
+	Sports
+	<input type="checkbox" name="interests" value="sports">
+	Books
+	<input type="checkbox" name="interests" value="sports">
+	Computer & Software
+	<input type="checkbox" name="interests" value="sports">
+	Fashion
+	<input type="checkbox" name="interests" value="sports">
+	Photography
+	<input type="checkbox" name="interests" value="sports"><br><br>
+</div>
+<div class="key">
+	<span class="label">  </span>
+	<input type="submit"  id="submit" value="Submit">
+</div>
 
  
    </form>
