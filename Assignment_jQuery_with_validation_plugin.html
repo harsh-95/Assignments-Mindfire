@@ -2,22 +2,20 @@
 <html>
 <head>
 <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-   <meta charset="utf-8">
-   
-   <!---responsive---->
-   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="HandheldFriendly" content="true">
-   <!----------------->
-   <title>jQuery validation login basic example</title>
-   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-   <meta name="viewport" content="width=device-width"/>
+
+   <title>jQuery validation Registration</title>
+
    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
    <script>
-     // Configuration
+   
+   
+	 //Validating a login form with the JQuery Validation plugin. The fields are first validated 
+	 //when the either fields blur(This event is sent when a textbox loses keyboard focus.) or the
+	 //form is submitted. Any fields found to have an error are then validated onkeyup(The keyup
+	 //event is raised when the user releases a key that's been pressed.).
+	 
          			   
-		
          jQuery.validator.setDefaults({
             debug: true,      //Avoids form submit. Comment when in production.
             success: "valid",
@@ -29,6 +27,12 @@
 		 
       $(document).ready(function() {
          // validate signup form on keyup and submit
+		 
+		 //jQuery.validator.addMethod( name, method [, message ] )
+		 // return this.optional(element) -> 
+		 //If the field is optional, the method returns successfully immediately;
+		 //if it's required, the method returns failure immediately.
+		 
 		 jQuery.validator.addMethod("lettersonly", function(value, element) {
   return this.optional(element) || /^[a-z]+$/i.test(value);
 }); 
@@ -221,10 +225,6 @@ label.error {
 <h3>  
 <div id="full-form">
   <form id="signupForm">
-   
-         
-		<!---------------------------------->
-			
 
 <div class="key"><span class="label">  </span>First Name</div>
 <input type="text" class="round" name="first"><br><br>
