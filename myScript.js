@@ -1,8 +1,9 @@
 $(document).ready(function() {
 
-var reg = new RegExp("^[a-zA-Z]+$");
+var regNumber = /^[0-9]+$/
+var reg = /^[a-zA-Z]+$/;
 var re = /\S+@\S+\.\S+/;
-
+var regPass = /[a-zA-Z]+[a-zA-Z]*[0-9]+[a-zA-Z]*/;
 
 
 function validateFirstName(){
@@ -99,6 +100,15 @@ function validatePassword(){
 		}
 		else if(password.length < 8){
 		submit = showError('password',"Please have min 8 characters in Password");
+		}
+		else if((regNumber.test(password))){
+		submit = showError('password',"Please have alphabets also in password");
+		}
+		else if((reg.test(password))){
+		submit = showError('password',"Please have numeric also in password");
+		}
+		else if(!(regPass.test(password))){
+		submit = showError('password',"Please enter password in alphanumeric String");
 		}
 		else{
 		submit = isFieldCorrect("password");
