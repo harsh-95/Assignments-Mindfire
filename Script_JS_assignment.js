@@ -1,202 +1,261 @@
 var x=0,y=0,z=0,res=0,op="";
-function validate()								 
-{
-	var re = /^[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.][a-zA-Z0-9]+$/;
+var regNumber = /^[0-9]+$/
+var regAlphabets = /^[a-zA-Z]+$/;
+var regEmail= /\S+@\S+\.\S+/;
+var regPass = /[a-zA-Z]+[a-zA-Z]*[0-9]+[a-zA-Z]*/;
+
+function validateFirstName(){
+	var submit = false;
 	var firstname = document.forms["form1"]["first-name"];
+	
+		if(firstname.value ==''){
+		submit = showError('first','Please fill first Name');
+		}
+		else if(!(regAlphabets.test(firstname.value))){
+		submit = showError('first',"Please enter only alphabets in First Name");
+		}
+		else{
+		submit = isFieldCorrect("first");
+		}
+		return submit;
+}
+
+function validateMiddleName(){
+	var submit = true;
 	var middlename = document.forms["form1"]["middle-name"];
-	var lastname = document.forms["form1"]["last-name"];	
+	
+		if(middlename.value != ''){
+			if(!(regAlphabets.test(middlename.value))){
+			submit = showError('middle',"Please enter only alphabets in Middle Name");
+			}
+			else{
+			submit = isFieldCorrect("middle");
+			}
+		}
+		return submit;
+}
+
+function validateLastName(){
+	var submit = false;
+	var lastname = document.forms["form1"]["last-name"];
+	
+		if(lastname.value ==''){
+		submit = showError('last','Please fill Last Name');
+		}
+		else if(!(regAlphabets.test(lastname.value))){
+		submit = showError('last',"Please enter only alphabets in Last Name");
+		}
+		else{
+		submit = isFieldCorrect("last");
+		}
+		return submit;
+}
+
+function validateEmail(){
+	var submit = false;
 	var email = document.forms["form1"]["email"]; 
+	
+		if(email.value ==''){
+		submit = showError('email','Please fill email');
+		}
+		else
+		{
+			if(!(regEmail.test(email.value))){
+			submit = showError('email',"Please enter email in proper format");
+			}
+			else{
+			submit = isFieldCorrect("email");
+			}
+		}
+		return submit;
+}
+
+
+function validatePhone(){
+	var submit = false;
 	var phone = document.forms["form1"]["phone"]; 
+	
+		if(phone.value ==''){
+		submit = showError('phone',"Please fill Phone number");
+		}
+		else if(phone.value.length < 10 || phone.value.length > 10){
+		submit = showError('phone',"Please enter a valid 10 digit mobile number");
+		}
+		else{
+		submit = isFieldCorrect("phone");
+		}
+		return submit;
+}
+
+
+function validatePassword(){
+	var submit = false;
 	var password = document.forms["form1"]["password"]; 
-	var dob = document.forms["form1"]["dob"]; 
-	var gender = document.forms["form1"]["gender"]; 
-	var currAddr = document.forms["form1"]["currAddr"];
-	var permAddr = document.forms["form1"]["permAddr"];
-	var city1 = document.forms["form1"]["city"];
-	var state = document.forms["form1"]["state"];
-	var zip = document.forms["form1"]["zip"];
-	var enteredValue = document.forms["form1"]["captcha"];
-
 	
-	if (firstname.value == "")								 
-	{
-		window.alert("Please enter your first name.");
-		firstname.focus();
-		return false;
-	}
-	if(allLetter(firstname))
-	{
-	
-	}
-	if (middlename.value != "")								 
-	{
+		if(password.value ==''){
+		submit = showError('password',"Please fill Password");
+		}
+		else
+		{	
+		if(password.value.length < 8){
+		submit = showError('password',"Please have min 8 characters in Password");
+		}
+		else
+		{
+		if(!(regPass.test(password.value))){
+		submit = showError('password',"Please enter password in alphanumeric String");
+		}
+		else{
+		submit = isFieldCorrect("password");
+		}
 		
-	if(allLetter(middlename))
-	{
-	
-	}
-	}
-	if (lastname.value == "")								 
-	{
-		window.alert("Please enter your last name.");
-		lastname.focus();
-		return false;
-	}
-	if(allLetter(lastname))
-	{
-	
-	}
-	if (email.value == "")								 
-	{
-		window.alert("Please enter a valid e-mail address.");
-		email.focus();
-		return false;
-	}
-	 
-	if(!(re.test(email.value)))
-	{
-	window.alert("Please fill Email correctly");
-	return false;
-	}
-	if (phone.value == "")						 
-	{
-		window.alert("Please enter your phone number.");
-		phone.focus();
-		return false;
-	}
-		else if(phone.value.length != 10)
-	{
-	window.alert("Please enter a valid 10 digit phone number.");
-		phone.focus();
-		return false;
-	}
-	else
-	{
-	}
-	if (password.value == "")					 
-	{
-		window.alert("Please enter your password");
-		password.focus();
-		return false;
-	}
-	else if(password.value.length < 8)
-	{
-	window.alert("Please have minimum 8 characters in Password.");
-		password.focus();
-		return false;
-	}
-	else
-	{
-	}
-	if (dob.value == "")					 
-	{
-		window.alert("Please enter your date of birth");
-		dob.focus();
-		return false;
-	}
-                if (gender[0].checked == true) 
-				{
-                } 
-				else if (gender[1].checked == true) 
-				{
-                } 
-				else 
-				{
-                    window.alert("Please select your gender");
-				
-                    return false;
-                }    
-	
-	if (currAddr.value == "")							 
-	{
-		window.alert("Please enter your current address.");
-		currAddr.focus();
-		return false;
-	}
-	if (permAddr.value == "")							 
-	{
-		window.alert("Please enter your permanent address.");
-		permAddr.focus();
-		return false;
-	}
-	if (city1.value == "")							 
-	{
-		window.alert("Please enter your city.");
-		city1.focus();
-		return false;
-	}
-	if(allLetter(city1))
-	{
-	
-	}
-	if (state.value == "")							 
-	{
-		window.alert("Please enter your state.");
-		state.focus();
-		return false;
-	}
-	if(allLetter(state))
-	{
-	
-	}
-	if (zip.value == "")							 
-	{
-		window.alert("Please enter your zip code.");
-		zip.focus();
-		return false;
-	}
-	else if(zip.value.length != 6)
-	{
-	window.alert("Please enter a valid 6 digit zip code.");
-		zip.focus();
-		return false;
-	}
-	else
-	{
-	}
-	if (enteredValue.value == "")								 
-	{
-		window.alert("Please enter result of Captcha.");
-		enteredValue.focus();
-		return false;
-	}
-		if (enteredValue.value != res)								 
-	{
-		window.alert("Wrong answer of Captcha.");
-		enteredValue.focus();
-		return false;
-	}
-	else
-	{
-	window.alert("Data Submitted.");
-	}
-
-
-	return true;
+		}
+		}
+		return submit;
 }
 
-function allLetter(name)
-{ 
-	var letters = /^[A-Za-z]+$/;
-	if(name.value.match(letters))
-	{
-	return true;
-	}
-	else
-	{
-	window.alert(name.name+' must have alphabet characters only');
-	name.focus();
-	return false;
-	}
+
+function validateDOB(){
+	var submit = false;
+	var dob = document.forms["form1"]["dob"]; 
 	
+		if(dob.value ==''){
+		submit = showError('dob',"Please fill dob");
+		}
+		else{
+		submit = isFieldCorrect("dob");
+		}
+		return submit;
 }
-///////////////////
+
+
+/*
+function validateGender(){
+	var submit = true;
+	var gender = $("#gender").val();
+	
+		if(!(gender[0].checked) || (gender[1].checked)){
+		submit = showError('gender',"Please select gender");
+		}
+		else{
+		submit = isFieldCorrect("gender");
+		}
+		return submit;
+}
+*/
+
+function validateCurrAddr(){
+	var submit = false;
+	var currAddr = document.forms["form1"]["currAddr"];
+	
+		if(currAddr.value ==''){
+		submit = showError('currAddr',"Please fill current Address");
+		}
+		else{
+		submit = isFieldCorrect("currAddr");
+		}
+		return submit;
+}
+
+
+function validatePermAddr(){
+	var submit = false;
+	var permAddr = document.forms["form1"]["permAddr"];
+	
+		if(permAddr.value ==''){
+		submit = showError('permAddr',"Please fill permanent Address");
+		}
+		else{
+		submit = isFieldCorrect("permAddr");
+		}
+		return submit;
+}
+
+function validateCityName(){
+	var submit = false;
+	var city1 = document.forms["form1"]["city"];
+	
+		if(city1.value ==''){
+		submit = showError('city','Please fill city Name');
+		}
+		else if(!(regAlphabets.test(city.value))){
+		submit = showError('city',"Please enter only alphabets in city Name");
+		}
+		else{
+		submit = isFieldCorrect("city");
+		}
+		return submit;
+}
+
+
+function validateStateName(){
+	var submit = false;
+	var state = document.forms["form1"]["state"];
+	
+		if(state.value ==''){
+		submit = showError('state','Please fill state Name');
+		}
+		else if(!(regAlphabets.test(state.value))){
+		submit = showError('state',"Please enter only alphabets in state Name");
+		}
+		else{
+		submit = isFieldCorrect("state");
+		}
+		return submit;
+}
+
+
+
+function validateZip(){
+	var submit = false;
+	var zip = document.forms["form1"]["zip"];
+	
+		if(zip.value ==''){
+		submit = showError('zip','Please fill zip Code');
+		}
+		else if(zip.value.length < 6 || zip.value.length > 6){
+		submit = showError('zip',"Please enter a valid 6 digit zip code");
+		}
+		else{
+		submit = isFieldCorrect("zip");
+		}
+		return submit;
+}
+
+function validateCaptcha(){             //for captcha	
+	var submit = false;
+	var enteredValue = document.forms["form1"]["captcha"];
+	
+		if (enteredValue.value == ""){
+		submit = showError('cap',"Please enter result of Captcha.");
+		}
+		else if(enteredValue.value != res){
+		submit = showError('cap',"Wrong answer of Captcha.");
+		}
+		else{
+		submit = isFieldCorrect('cap');
+		}
+		return submit;
+}
+	
+
+function showError(field,message){
+		document.getElementById("error_"+field).innerHTML = message;
+		return false;
+}
+
+function isFieldCorrect(field){
+		document.getElementById("error_"+field).innerHTML = "";
+		return true;
+}
+
 function operands() 
 {
 x=Math.ceil(Math.random()*10);
 y=Math.ceil(Math.random()*10);  
 captcha(x,y,z);
 }
+
 function operator() 
 {
 z=(Math.ceil(Math.random()*10))%4;
@@ -229,5 +288,18 @@ else
 op="/";
 res=Math.floor(x1/y1);
 }
-    document.getElementById("cap").innerHTML = x1+" "+op+" "+y1;
+    document.getElementById("cap").innerHTML = x1+" "+op+" "+y1;	
+}
+
+
+function validate()								 
+{
+	validateFirstName();validateMiddleName();validateLastName();validateEmail();validatePhone();
+	validatePassword();validateDOB();validateCurrAddr();validatePermAddr();validateCityName();
+	validateStateName();validateZip();validateCaptcha();
+
+return  (validateLastName() && validateMiddleName() && validateFirstName() && validateEmail() && validatePassword() && validatePhone() &&
+			validateDOB() && validateCurrAddr() &&  validatePermAddr() && validateCityName() && validateStateName() 
+			&& validateZip() && validateCaptcha());
+
 }
