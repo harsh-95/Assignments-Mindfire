@@ -1,7 +1,7 @@
 select {
 	margin-left:40px;
     padding: 6px 20px;
-    border: none;
+	border: 1px solid black;
     border-radius: 4px;
 }
 input[type=date] {
@@ -50,22 +50,23 @@ background-color:#febfff;
 	margin:2px 40px;
     padding: 12px 20px;
     border-radius: 5px;
-	  border: 1px solid black;
+	border: 1px solid black;
     box-sizing: border-box;
 }
 .addr:focus{
 background-color:#febfff;	
 }
 .addr:hover{
-border-radius: 5px;
+	border-radius: 5px;
     border: 1px solid red;
 
 }
 
 .addr{
-border-radius: 5px;
-margin:2px 40px;
-   height: 75px; width:30%
+	border-radius: 5px;
+	margin:2px 40px;
+	border: 1px solid black;
+	height: 75px; width:30%
 }
 
 body{
@@ -87,7 +88,7 @@ h1{
 	color: red;
 }
 
-.label:before{
+  .label:before{
      content:"*" ;
      color:red   
      }
@@ -95,4 +96,11 @@ h1{
 label.error {
   color: red;
 font-family: 'Varela Round', sans-serif;
+}
+
+#error_current{
+	margin-left: 250px;
+}
+#error_permanent{
+	margin-left: 220px;
 }
