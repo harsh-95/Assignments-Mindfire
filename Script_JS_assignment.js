@@ -6,7 +6,7 @@ var regPass = /[a-zA-Z]+[a-zA-Z]*[0-9]+[a-zA-Z]*/;
 
 function validateFirstName(){
 	var submit = false;
-	var firstname = document.forms["form1"]["first-name"];
+	var firstname = document.forms["form1"]["first"];
 	
 		if(firstname.value ==''){
 		submit = showError('first','Please fill first Name');
@@ -22,7 +22,7 @@ function validateFirstName(){
 
 function validateMiddleName(){
 	var submit = true;
-	var middlename = document.forms["form1"]["middle-name"];
+	var middlename = document.forms["form1"]["middle"];
 	
 		if(middlename.value != ''){
 			if(!(regAlphabets.test(middlename.value))){
@@ -37,7 +37,7 @@ function validateMiddleName(){
 
 function validateLastName(){
 	var submit = false;
-	var lastname = document.forms["form1"]["last-name"];
+	var lastname = document.forms["form1"]["last"];
 	
 		if(lastname.value ==''){
 		submit = showError('last','Please fill Last Name');
@@ -240,12 +240,13 @@ function validateCaptcha(){             //for captcha
 
 function showError(field,message){
 		document.getElementById("error_"+field).innerHTML = message;
-	
+		document.getElementById(field).setAttribute("style","background-color: #ff9999");
 		return false;
 }
 
 function isFieldCorrect(field){
 		document.getElementById("error_"+field).innerHTML = "";
+		document.getElementById(field).setAttribute("style","background-color: white");
 		return true;
 }
 
@@ -281,7 +282,7 @@ function generateCaptcha(operand1,operand2,operatorValue){
 		operator = "/";
 		res = Math.floor(local_operand1/local_operand2);
 	}
-		document.getElementById("cap").innerHTML = local_operand1 + " " + operator +" " + local_operand2;
+		document.getElementById("show_captcha").innerHTML = local_operand1 + " " + operator +" " + local_operand2;
 }
 
 
