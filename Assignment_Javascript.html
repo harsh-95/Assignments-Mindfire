@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-<title>
-User Registration Form
-</title>
-<script src="Script_JS_assignment.js"></script>
-<link rel="stylesheet" type="text/css" href="myCss.css">
-</head>
-<body onload="operands();operator();captcha(x,y,z);">
-<header>
-<h1> Registration Form</h1>
-</header>
-<hr>
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+		<title>User Registration Form</title>
+		
+		<script src="Script_JS_assignment.js"></script>
+		<link rel="stylesheet" type="text/css" href="myCss.css">
+	</head>
+<body onload="generateOperands();generateOperator();generateCaptcha(x,y,z);">
+
+	<header>
+		<h1> Registration Form</h1>
+	</header>
+	<hr>
 <h3>
 
-<form name="form1" onsubmit="return validate()" action="#"  method="get">
+	<form name="form1" onsubmit="return validate()" action="#"  method="get">
 
 <div class="key">
 	<span> 
@@ -67,7 +67,7 @@ User Registration Form
 <div class="key">
 	<span> 
 		<span class="mandatory">*</span>  Gender
-	</span></span>
+	</span>
 </div>
 <br>
 <div class="key">
@@ -81,19 +81,20 @@ User Registration Form
 <div class="key">
 	<span> 
 		<span class="mandatory">*</span>  Current Address
+		<span class="error" id="error_current">  </span>
 	</span>
+	
 </div>
 
-	<textarea name="currAddr" class="addr" id="currAddr" rows="4" cols="25" onblur="validateCurrAddr()"></textarea>
-	<span class="error" id="error_currAddr">  </span><br><br><br>
+	<textarea name="current" class="addr" id="current" rows="4" cols="25" onblur="validateCurrentAddress()"></textarea><br><br><br>
 <div class="key">
 	<span> 
 		<span class="mandatory">*</span>  Permanent Address
+		<span class="error" id="error_permanent">  </span>
 	</span>
 </div>
 
-	<textarea name="permAddr" class="addr" id="permAddr" rows="3" cols="40" onblur="validatePermAddr()"></textarea>
-	<span class="error" id="error_permAddr">  </span><br><br><br>
+	<textarea name="permanent" class="addr" id="permanent" rows="3" cols="40" onblur="validatePermanentAddress()"></textarea><br><br><br>
 <div class="key">
 	<span> 
 		<span class="mandatory">*</span>  City
@@ -130,8 +131,8 @@ User Registration Form
 </div>
 <!-----Captcha------->
 <div class="key">Captcha
-	<input type="button" value="Refresh values" onclick="operands()">
-	<input type="button" value="Refresh operator" onclick="operator()">
+	<input type="button" value="Refresh values" onclick="generateOperands()">
+	<input type="button" value="Refresh operator" onclick="generateOperator()">
 </div>
 <div class="key">
 	<span>
@@ -145,14 +146,13 @@ User Registration Form
 <br><br>
 <!------------------->
 <div class="key">
-<input type="submit"  value="Submit">
+	<input type="submit"  value="Submit">
 </div>
-</form>
-</h3>
-<hr>
-<footer>
-<h3><pre>   © 2018 XYZ, Inc.      Contact Us      Terms        Privacy          About
-</pre></h3> 
-</footer>
+	</form>
+	</h3>
+	<hr>
+	<footer>
+		<h3><pre>   © 2018 XYZ, Inc.      Contact Us      Terms        Privacy          About </pre></h3> 
+	</footer>
 </body>
 </html>
