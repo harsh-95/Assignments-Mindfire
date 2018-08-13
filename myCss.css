@@ -30,7 +30,7 @@ input[type=submit]
 	width:20%;
 	background-color: #01b20a;
 	color: white;
-	 border-radius: 10px;
+	border-radius: 10px;
 	padding: 14px 20px;
 	border: none;
 	cursor: pointer;
@@ -103,4 +103,10 @@ font-family: 'Varela Round', sans-serif;
 }
 #error_permanent{
 	margin-left: 220px;
+}
+#error_gender{
+	margin-left: 250px;
+}
+#cap{
+width:75px;
 }
