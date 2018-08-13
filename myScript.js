@@ -144,10 +144,23 @@ function validateEmail(){
 		else if(!(re.test(email))){
 		submit = showError('email',"Please enter email in proper format");
 		}
+		else if(checkFreq(email) > 1){
+		submit = showError('email',"can't have multiple @ symbols");
+		}
 		else{
 		submit = isFieldCorrect("email");
 		}
 		return submit;
+}
+//for checking frequency of @ in email field
+function checkFreq(email){
+	var count=0;
+	for(var i=0;i<email.length;i++){
+		if(email[i] === '@'){
+			count++;
+		}
+	}
+	return count;
 }
 
 //function to validate Phone
