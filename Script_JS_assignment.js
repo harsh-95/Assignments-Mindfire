@@ -1,4 +1,4 @@
-var x=0,y=0,z=0,res=0,op="";
+var operand1 = 0,operand2 = 0,operatorValue = 0,result = 0,operator = "";
 var regNumber = /^[0-9]+$/
 var regAlphabets = /^[a-zA-Z]+$/;
 var regEmail= /\S+@\S+\.\S+/;
@@ -129,7 +129,7 @@ function validateDOB(){
 }
 
 
-/*
+
 function validateGender(){
 	var submit = true;
 	var gender = $("#gender").val();
@@ -142,31 +142,30 @@ function validateGender(){
 		}
 		return submit;
 }
-*/
 
-function validateCurrAddr(){
+function validateCurrentAddress(){
 	var submit = false;
-	var currAddr = document.forms["form1"]["currAddr"];
+	var currentAddress = document.forms["form1"]["current"];
 	
-		if(currAddr.value ==''){
-		submit = showError('currAddr',"Please fill current Address");
+		if(currentAddress.value ==''){
+		submit = showError('current',"Please fill current Address");
 		}
 		else{
-		submit = isFieldCorrect("currAddr");
+		submit = isFieldCorrect("current");
 		}
 		return submit;
 }
 
 
-function validatePermAddr(){
+function validatePermanentAddress(){
 	var submit = false;
-	var permAddr = document.forms["form1"]["permAddr"];
+	var permanentAddress = document.forms["form1"]["permanent"];
 	
-		if(permAddr.value ==''){
-		submit = showError('permAddr',"Please fill permanent Address");
+		if(permanentAddress.value ==''){
+		submit = showError('permanent',"Please fill permanent Address");
 		}
 		else{
-		submit = isFieldCorrect("permAddr");
+		submit = isFieldCorrect("permanent");
 		}
 		return submit;
 }
@@ -241,6 +240,7 @@ function validateCaptcha(){             //for captcha
 
 function showError(field,message){
 		document.getElementById("error_"+field).innerHTML = message;
+	
 		return false;
 }
 
@@ -249,57 +249,50 @@ function isFieldCorrect(field){
 		return true;
 }
 
-function operands() 
-{
-x=Math.ceil(Math.random()*10);
-y=Math.ceil(Math.random()*10);  
-captcha(x,y,z);
+function generateOperands(){
+	operand1 = Math.ceil(Math.random()*10);
+	operand2 = Math.ceil(Math.random()*10);  
+	generateCaptcha(operand1,operand2,operatorValue);
 }
 
-function operator() 
-{
-z=(Math.ceil(Math.random()*10))%4;
-captcha(x,y,z);
+function generateOperator(){
+	operatorValue = (Math.ceil(Math.random()*10))%4;
+	generateCaptcha(operand1,operand2,operatorValue);
 }
 
-function captcha(x,y,z) 
-{
- var x1=x;
-var y1=y;
-var z1=z;
+function generateCaptcha(operand1,operand2,operatorValue){
+	var local_operand1 = operand1;
+	var local_operand2 = operand2;
+	var local_operatorValue = operatorValue;
 
-if(z1===0)
-{
-op="+";
-res=x1+y1;
-}
-else if(z1===1)
-{
-op="-";
-res=x1-y1;
-}
-else if(z1===2)
-{
-op="*";
-res=x1*y1;
-}
-else
-{
-op="/";
-res=Math.floor(x1/y1);
-}
-    document.getElementById("cap").innerHTML = x1+" "+op+" "+y1;	
+	if(local_operatorValue === 0){
+		operator = "+";
+		res= local_operand1 + local_operand2;
+	}
+	else if(local_operatorValue === 1){
+		operator = "-";
+		res = local_operand1 - local_operand2;
+	}
+	else if(local_operatorValue === 2){
+		operator = "*";
+		res = local_operand1 * local_operand2;
+	}
+	else{
+		operator = "/";
+		res = Math.floor(local_operand1/local_operand2);
+	}
+		document.getElementById("cap").innerHTML = local_operand1 + " " + operator +" " + local_operand2;
 }
 
 
 function validate()								 
 {
 	validateFirstName();validateMiddleName();validateLastName();validateEmail();validatePhone();
-	validatePassword();validateDOB();validateCurrAddr();validatePermAddr();validateCityName();
+	validatePassword();validateDOB();validateCurrentAddress();validatePermanentAddress();validateCityName();
 	validateStateName();validateZip();validateCaptcha();
 
 return  (validateLastName() && validateMiddleName() && validateFirstName() && validateEmail() && validatePassword() && validatePhone() &&
-			validateDOB() && validateCurrAddr() &&  validatePermAddr() && validateCityName() && validateStateName() 
+			validateDOB() && validateCurrentAddress() &&  validatePermanentAddress() && validateCityName() && validateStateName() 
 			&& validateZip() && validateCaptcha());
 
 }
