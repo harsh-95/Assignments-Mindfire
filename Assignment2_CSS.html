@@ -1,140 +1,160 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-<title>
-User Registration Form
-</title>
-<link rel="stylesheet" type="text/css" href="myCss.css">
+	<head>
+		<title>Registration Form</title>
+		<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="myCss.css">
 
  <!--             USED EXTERNAL CSS          -->
 
-</head>
+	</head>
 <body>
-<header>
-<h1> Registration Form</h1>
-</header>
-<hr>
-<h3>
+	<header>
+		<h1> Registration Form</h1>
+	</header><hr>
+	
+	<h3>
+<form action="#" method="get">
+
+<div class="key">
+	<span class="label">First Name</span>
+</div>
+	<input type="text" name="first" class="round" placeholder="enter first name" required><br><br>
 
 
-<form action="#" method="put">
+<div class="key">
+	<span class="label">Last Name</span>
+</div>
+	<input type="text" name="last" class="round" placeholder="enter last name" required><br><br>
 
-<div class="key"><span class="label">  </span>First Name</div>
-<input type="text" name="first" class="round" placeholder="enter first name" required><br><br>
+<div class="key">
+	<span class="label">Email</span>
+</div>
+	<input type="email" name="email" class="round" placeholder="enter your email" required><br><br>
 
+<div class="key">
+	<span class="label">Password</span>
+</div>
+	<input type="password" name="password" class="round" placeholder="min 8 characters" required><br><br>
 
-<div class="key"><span class="label">  </span>Last Name</div>
-<input type="text" name="last" class="round" placeholder="enter last name" required><br><br>
+<div class="key">
+	<span class="label">Confirm Password</span>
+</div>
+	<input type="password" name="password" class="round" placeholder="retype password" required><br><br>
 
-<div class="key"><span class="label">  </span>Email</div>
-<input type="email" name="email" class="round" placeholder="enter your email" required><br><br>
+<div class="key">
+	<span class="label">Gender</span>
+</div><br>
 
-<div class="key"><span class="label">  </span>Password</div>
-<input type="password" name="password" class="round" placeholder="min 8 characters" required><br><br>
+<div class="key">
+	<input type="radio" name="Gender" value="Male" required>Male
+	<input type="radio" name="Gender" value="Female" required>Female
+</div><br><br>
 
-<div class="key"><span class="label">  </span>Confirm Password</div>
-<input type="password" name="password" class="round" placeholder="retype password" required><br><br>
-
-<div class="key"><span class="label">  </span>Gender</div><br>
-<div class="key"><input type="radio" name="Gender" value="Male" required>Male
-
-<input type="radio" name="Gender" value="Female" required>Female</div><br><br>
-
-
-<div class="key"><span class="label">  </span>Phone 1</div>
-<input type="number" name="phone1" class="round" placeholder="enter mobile number" required><br><br>
+<div class="key">
+	<span class="label">Phone 1</span>
+</div>
+	<input type="number" name="phone1" class="round" placeholder="enter mobile number" required><br><br>
 
 <div class="key">Phone 2</div>
-<input type="number" name="phone2" placeholder="alternate mobile number" class="round"><br><br>
+	<input type="number" name="phone2" placeholder="alternate mobile number" class="round"><br><br>
 
-<div class="key"><span class="label">  </span>Address 1</div>
-
-<textarea rows="3" cols="40" class="addr" placeholder="enter full address" required></textarea><br><br>
+<div class="key">
+	<span class="label">Address 1</span>
+</div>
+	<textarea rows="3" cols="40" class="addr" placeholder="enter full address" required></textarea><br><br>
 
 <div class="key">Address 2</div>
+	<textarea rows="3" cols="40" class="addr" placeholder="enter local address" ></textarea><br><br>
 
-<textarea rows="3" cols="40" class="addr" placeholder="enter local address" ></textarea><br><br>
+<div class="key">
+	<span class="label">City</span>
+</div>
+	<input type="text" name="city" class="round" placeholder="enter your city" required><br><br>
 
-<div class="key"><span class="label">  </span>City</div>
-<input type="text" name="city" class="round" placeholder="enter your city" required><br><br>
+<div class="key">
+	<span class="label">State</span>
+</div>
 
-<div class="key"><span class="label">  </span>State</div>
-<select name="states" required>
-<option value="">------------Select State------------</option>
-<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-<option value="Andhra Pradesh">Andhra Pradesh</option>
-<option value="Arunachal Pradesh">Arunachal Pradesh</option>
-<option value="Assam">Assam</option>
-<option value="Bihar">Bihar</option>
-<option value="Chandigarh">Chandigarh</option>
-<option value="Chhattisgarh">Chhattisgarh</option>
-<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
-<option value="Daman and Diu">Daman and Diu</option>
-<option value="Delhi">Delhi</option>
-<option value="Goa">Goa</option>
-<option value="Gujarat">Gujarat</option>
-<option value="Haryana">Haryana</option>
-<option value="Himachal Pradesh">Himachal Pradesh</option>
-<option value="Jammu and Kashmir">Jammu and Kashmir</option>
-<option value="Jharkhand">Jharkhand</option>
-<option value="Karnataka">Karnataka</option>
-<option value="Kerala">Kerala</option>
-<option value="Lakshadweep">Lakshadweep</option>
-<option value="Madhya Pradesh">Madhya Pradesh</option>
-<option value="Maharashtra">Maharashtra</option>
-<option value="Manipur">Manipur</option>
-<option value="Meghalaya">Meghalaya</option>
-<option value="Mizoram">Mizoram</option>
-<option value="Nagaland">Nagaland</option>
-<option value="Orissa">Orissa</option>
-<option value="Pondicherry">Pondicherry</option>
-<option value="Punjab">Punjab</option>
-<option value="Rajasthan">Rajasthan</option>
-<option value="Sikkim">Sikkim</option>
-<option value="Tamil Nadu">Tamil Nadu</option>
-<option value="Tripura">Tripura</option>
-<option value="Uttaranchal">Uttaranchal</option>
-<option value="Uttar Pradesh">Uttar Pradesh</option>
-<option value="West Bengal">West Bengal</option>
-</select><br><br>
-
-<div class="key"><span class="label">  </span>Country</div>
-<select name="countries" required>
-	<option value="">-----Select Country------</option>
-	<option value="United States">United States</option> 
-	<option value="United Kingdom">United Kingdom</option> 
-	<option value="Afghanistan">Afghanistan</option> 
-	<option value="China">China</option> 
-	<option value="Algeria">Algeria</option> 
-	<option value="America">America</option> 
-	<option value="Germany">Germany</option> 
-	<option value="Bangladesh">Bangladesh</option> 
-	<option value="Japan">Japan</option> 
-	<option value="Italy">Italy</option> 
-	<option value="India">India</option> 
-	<option value="Argentina">Argentina</option> 
-	<option value="Armenia">Armenia</option> 
-	<option value="Pakistan">Pakistan</option> 
-	<option value="Australia">Australia</option> 
-	<option value="Thailand">Thailand</option> 
+	<select name="states" required>
+		<option value="">------------Select State------------</option>
+		<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+		<option value="Andhra Pradesh">Andhra Pradesh</option>
+		<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+		<option value="Assam">Assam</option>
+		<option value="Bihar">Bihar</option>
+		<option value="Chandigarh">Chandigarh</option>
+		<option value="Chhattisgarh">Chhattisgarh</option>
+		<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+		<option value="Daman and Diu">Daman and Diu</option>
+		<option value="Delhi">Delhi</option>
+		<option value="Goa">Goa</option>
+		<option value="Gujarat">Gujarat</option>
+		<option value="Haryana">Haryana</option>
+		<option value="Himachal Pradesh">Himachal Pradesh</option>
+		<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+		<option value="Jharkhand">Jharkhand</option>
+		<option value="Karnataka">Karnataka</option>
+		<option value="Kerala">Kerala</option>
+		<option value="Lakshadweep">Lakshadweep</option>
+		<option value="Madhya Pradesh">Madhya Pradesh</option>
+		<option value="Maharashtra">Maharashtra</option>
+		<option value="Manipur">Manipur</option>
+		<option value="Meghalaya">Meghalaya</option>
+		<option value="Mizoram">Mizoram</option>
+		<option value="Nagaland">Nagaland</option>
+		<option value="Orissa">Orissa</option>
+		<option value="Pondicherry">Pondicherry</option>
+		<option value="Punjab">Punjab</option>
+		<option value="Rajasthan">Rajasthan</option>
+		<option value="Sikkim">Sikkim</option>
+		<option value="Tamil Nadu">Tamil Nadu</option>
+		<option value="Tripura">Tripura</option>
+		<option value="Uttaranchal">Uttaranchal</option>
+		<option value="Uttar Pradesh">Uttar Pradesh</option>
+		<option value="West Bengal">West Bengal</option>
 	</select><br><br>
 
-<div class="key"><span class="label">  </span>Subscribe Newsletter</div><br>
-<div class="key"><input type="radio" name="Gender" value="Male" required>Yes
+<div class="key">
+	<span class="label">Country</span>
+</div>
+	<select name="countries" required>
+		<option value="">-----Select Country------</option>
+		<option value="United States">United States</option> 
+		<option value="United Kingdom">United Kingdom</option> 
+		<option value="Afghanistan">Afghanistan</option> 
+		<option value="China">China</option> 
+		<option value="Algeria">Algeria</option> 
+		<option value="America">America</option> 
+		<option value="Germany">Germany</option> 
+		<option value="Bangladesh">Bangladesh</option> 
+		<option value="Japan">Japan</option> 
+		<option value="Italy">Italy</option> 
+		<option value="India">India</option> 
+		<option value="Argentina">Argentina</option> 
+		<option value="Armenia">Armenia</option> 
+		<option value="Pakistan">Pakistan</option> 
+		<option value="Australia">Australia</option> 
+		<option value="Thailand">Thailand</option> 
+	</select><br><br>
 
-<input type="radio" name="Gender" value="Female" required>No</div><br><br>
+<div class="key">
+	<span class="label">Subscribe Newsletter</span>
+</div><br>
+
+<div class="key">
+	<input type="radio" name="Gender" value="Male" required>Yes
+	<input type="radio" name="Gender" value="Female" required>No
+</div><br><br>
 
 
 <input type="submit" value="Submit">
 
 
-</form>
-</h3>
-<hr>
-<footer>
-<h3><pre>   © 2018 XYZ, Inc.      Contact Us      Terms        Privacy          About
-</pre></h3> 
-</footer>
+	</form>
+	</h3><hr>
+		<footer>
+			<h3><pre>   © 2018 XYZ, Inc.      Contact Us      Terms        Privacy          About</pre></h3> 
+		</footer>
 </body>
 </html>
