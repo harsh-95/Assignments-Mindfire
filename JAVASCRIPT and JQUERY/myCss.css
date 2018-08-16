@@ -1,0 +1,115 @@
+select {
+	margin-left:40px;
+    padding: 6px 20px;
+	border: 1px solid black;
+    border-radius: 4px;
+}
+input[type=date] {
+	width:20%;
+	margin:2px 40px;
+    padding: 12px 20px;
+    border-radius: 5px;
+	border: 1px solid black;
+    box-sizing: border-box;
+}
+input[type=button]
+{
+	width:10%;
+	background-color: blue;
+	color: white;
+  	padding: 2px;
+	border: 1px solid black;
+	border-radius: 5px;
+	cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: #007c06;
+}
+input[type=submit]
+{
+	width:20%;
+	background-color: #01b20a;
+	color: white;
+	border-radius: 10px;
+	padding: 14px 20px;
+	border: none;
+	cursor: pointer;
+}
+.key{
+	margin-left:40px;	
+}
+
+.round:focus{
+background-color:#febfff;	
+}
+.round:hover{	
+    border: 1px solid red;
+}
+.round {
+	width:25%;
+	margin:2px 40px;
+    padding: 12px 20px;
+    border-radius: 5px;
+	border: 1px solid black;
+    box-sizing: border-box;
+}
+.addr:focus{
+background-color:#febfff;	
+}
+.addr:hover{
+	border-radius: 5px;
+    border: 1px solid red;
+
+}
+
+.addr{
+	border-radius: 5px;
+	margin:2px 40px;
+	border: 1px solid black;
+	height: 75px; width:30%
+}
+
+body{
+background-color:light blue;	
+background-size: cover;
+font-family: 'Varela Round', sans-serif;
+margin-left:200px;
+margin-top:50px;
+}
+
+.error {
+  color: red;
+  font-family: 'Varela Round', sans-serif;
+}
+h1{
+	text-align: center;
+}
+.mandatory{
+	color: red;
+}
+
+  .label:before{
+     content:"*" ;
+     color:red   
+     }
+
+label.error {
+  color: red;
+font-family: 'Varela Round', sans-serif;
+}
+
+#male{
+	margin-left: 25px;
+}
+#error_current{
+	margin-left: 250px;
+}
+#error_permanent{
+	margin-left: 220px;
+}
+#error_gender{
+	margin-left: 250px;
+}
+#cap{
+width:75px;
+}
