@@ -1,39 +1,26 @@
-1. (a)    select COUNT(*) from tblEmp;
-   (b)    select min(moSalary) from tblEmp;
-   (c)    select count(distinct ntLevel) from tblEmp;
-
-//combining
-
-select COUNT(*)as TotalEmployees ,min(moSalary) as MinSalary,
-count(distinct ntLevel) as Total_Distinct_ntLevel from tblEmp;
+															ANSWERS TO DATABASE ASSIGNMENT		
+															
+1.		select COUNT(*)as TotalEmployees ,min(moSalary) as MinSalary,
+		count(distinct ntLevel) as Total_Distinct_ntLevel from tblEmp;
 
 
 
 2.      SELECT E.[ntEmpID], E.[vcName],E.[vcMobieNumer]
 		FROM tblEmp as E;
 
-
-
-3. (a)    select * from tblEmp where vcMobieNumer is null AND ntLevel=1;
-   (b)    select * from tblEmp where ntLevel=0;
-
-
-//combining
-
-
-IF ((select distinct ntLevel from tblEmp where vcMobieNumer is null AND ntLevel=1) >0)
-BEGIN
-   select * from tblEmp where vcMobieNumer is null AND ntLevel=1
-END
-ELSE
-BEGIN
-    select * from tblEmp where ntLevel=0
-END
+3.		IF ((select distinct ntLevel from tblEmp where vcMobieNumer is null AND ntLevel=1) >0)
+		BEGIN
+		   select * from tblEmp where vcMobieNumer is null AND ntLevel=1
+		END
+		ELSE
+		BEGIN
+			select * from tblEmp where ntLevel=0
+		END
 
 
 
 4.       select *
-		,case when vcSkills like '%Java%' then 1
+		,case when vcSkills like '%JavaScript%' then 1
          
 		end as [priority]
 		from tblEmp 
@@ -41,32 +28,27 @@ END
 
 
 
-
-
-
-
-
-5. Explain the TOP clause in the following sql queries?
+5. 		Explain the TOP clause in the following sql queries?
     
-    a. SELECT TOP(1) * FROM tblEmp 
+		a. SELECT TOP(1) * FROM tblEmp 
 	
 Ans: It will return the top 'n' rows of the result set retrieved, 'n' being the number specified inside
 	the Top clause.
 		For example, TOP(10) would return the top 10 rows of the full result set.
 		
-    b. SELECT TOP(SELECT 3/2) * FROM tblEmp 
+		b. SELECT TOP(SELECT 3/2) * FROM tblEmp 
 	
 Ans: It will return the top 'n' rows of the result set retrieved, 'n' being converted into integer first
 	and specified inside the Top clause.
 		For example, TOP(10/3) would return the top (10/3) = 3 rows of the full result set.
 	
-    c. SELECT TOP(1) PERCENT * FROM tblEmp
+		c. SELECT TOP(1) PERCENT * FROM tblEmp
 	
 Ans: It will return the top rows of the result set retrieved based on percentage, 'n' being the percentage
 	specified inside the Top clause.
 		For example, TOP(10) PERCENT would return the top 10% rows of the full result set.
 		
-    d. SELECT TOP(1) WITH TIES * FROM tblEmp ORDER BY vcName
+		d. SELECT TOP(1) WITH TIES * FROM tblEmp ORDER BY vcName
 	
 Ans: TOP clause is commonly used to get top required rows from a result set,also it can be used with
 	 WITH TIES clause, to retrieve all similar rows to base result set.	
@@ -74,8 +56,7 @@ Ans: TOP clause is commonly used to get top required rows from a result set,also
 
 
 
-
-6. When I executed this query:
+6.		 When I executed this query:
            
    SELECT [vcName],[vcMobieNumer] FROM [dbo].[tblEmp] GROUP BY [vcName]
 
@@ -89,20 +70,54 @@ Ans: The column names in SELECT clause and GROUP BY clause should be same.
 
 
 
-8.      select * from HumanResources.Employee
+8.      select count(*) from Person.Person where Suffix != 'NULL';
 
 
 
+9.      SELECT Firstname + ' ' + ISNULL(MiddleName,'') + ' '  + LastName AS FullName
+		from Person.Person,Person.BusinessEntityAddress,Person.Address
+		where Person.BusinessEntityID = BusinessEntityAddress.BusinessEntityID
+		AND  BusinessEntityAddress.rowguid = Address.rowguid;
 
 
+10.     SELECT CompanyName from Person.Person,Person.Company 
+	 	where FirstName = 'James'AND MiddleName = 'D.' AND LastName = 'Kramer'
+		AND Person.BusinessEntityID = Company.BusinessEntityId;
 
+11.		select SalesOrderID,UnitPrice from Sales.SalesOrderDetail
+		where OrderQty = 1;
+		
+		
+12.     select Description from Production.ProductDescription , Production.ProductModelProductDescriptionCulture
+		where ProductModelProductDescriptionCulture.CultureID = 'fr'
+		AND ProductDescription.ProductDescriptionID = ProductModelProductDescriptionCulture.ProductDescriptionID
+		AND ProductDescription.ProductDescriptionID = '736';		
+		
+	
+13.     select Name,OrderQty,ListPrice from Sales.Customer,Sales.Store,Sales.SalesOrderDetail,Production.ProductListPriceHistory
+		where Customer.CustomerID = 635
+		AND Customer.ProductID = ProductListPriceHistory.ProductID;
 
+	
+14.     select count(*) from Person.Address ,Production.ProductSubcategory
+		where Address.city = 'london'
+		AND ProductSubcategory.Name = 'Cranksets';	
+	
+	
+15.    	Char DataType
+		Char datatype which is used to store fixed length of characters. Suppose if we declared char(50)
+		it will allocates memory for 50 characters. Once we declare char(50) and insert only 10 characters
+		of word then only 10 characters of memory will be used and other 40 characters of memory will be wasted.
 
+		varchar DataType
+		Varchar means variable characters and it is used to store non-unicode characters. It will allocate
+		the memory based on number characters inserted. Suppose if we declared varchar(50) it will allocates
+		memory of 0 characters at the time of declaration. Once we declare varchar(50) and insert only 10 
+		characters of word it will allocate memory for only 10 characters.
 
-
-
-
-
-
-
+		nvarchar DataType
+		nvarchar datatype same as varchar datatype but only difference nvarchar is used to store Unicode 
+		characters and it allows you to store multiple languages in database. nvarchar datatype will take 
+		twice as much space to store extended set of characters as required by other languages.
+		So if we are not using other languages then it’s better to use varchar datatype instead of nvarchar
 
