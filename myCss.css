@@ -98,6 +98,9 @@ label.error {
 font-family: 'Varela Round', sans-serif;
 }
 
+#male{
+	margin-left: 25px;
+}
 #error_current{
 	margin-left: 250px;
 }
