@@ -1,30 +1,17 @@
+/*to format dropdown State and Country*/
 select {
 	margin-left:40px;
     padding: 6px 20px;
 	border: 1px solid black;
     border-radius: 4px;
 }
-input[type=date] {
-	width:20%;
-	margin:2px 40px;
-    padding: 12px 20px;
-    border-radius: 5px;
-	border: 1px solid black;
-    box-sizing: border-box;
-}
-input[type=button]
-{
-	width:10%;
-	background-color: blue;
-	color: white;
-  	padding: 2px;
-	border: 1px solid black;
-	border-radius: 5px;
-	cursor: pointer;
-}
+
+/*changes the color of submit button
+  when mouse pointer hovers over it*/
 input[type=submit]:hover {
     background-color: #007c06;
 }
+/*format submit button*/
 input[type=submit]
 {
 	width:20%;
@@ -35,81 +22,63 @@ input[type=submit]
 	border: none;
 	cursor: pointer;
 }
-.key{
+
+/*to adjust all labels*/
+.label{
 	margin-left:40px;	
 }
 
-.round:focus{
+/*when an input field is focussed*/
+.input-field:focus{
 background-color:#febfff;	
 }
-.round:hover{	
-    border: 1px solid red;
+/*when mouse pointer hovers over 
+  an input field*/
+.input-field:hover{	
+    border: 1px solid #f2002c;
 }
-.round {
+/*to format all input fields*/
+.input-field {
 	width:25%;
 	margin:2px 40px;
     padding: 12px 20px;
     border-radius: 5px;
-	border: 1px solid black;
+	border: 1px solid #000000;
     box-sizing: border-box;
 }
-.addr:focus{
+
+/*when textarea is focussed*/
+.address-field:focus{
 background-color:#febfff;	
 }
-.addr:hover{
+/*when mouse pointer hovers over 
+   textarea*/
+.address-field:hover{
 	border-radius: 5px;
     border: 1px solid red;
-
 }
-
-.addr{
+/*to format textarea*/
+.address-field{
 	border-radius: 5px;
 	margin:2px 40px;
-	border: 1px solid black;
+	border: 1px solid #000000;
 	height: 75px; width:30%
 }
 
+/*set margins, fonts*/
 body{
-background-color:light blue;	
-background-size: cover;
 font-family: 'Varela Round', sans-serif;
 margin-left:200px;
 margin-top:50px;
 }
 
-.error {
-  color: red;
-  font-family: 'Varela Round', sans-serif;
-}
-h1{
+/*align header to center*/
+header{
 	text-align: center;
 }
-.mandatory{
-	color: red;
-}
 
-  .label:before{
+/*to mark * before mandatory fields*/
+.mandatory:before{
      content:"*" ;
      color:red   
-     }
-
-label.error {
-  color: red;
-font-family: 'Varela Round', sans-serif;
-}
-
-#male{
-	margin-left: 25px;
-}
-#error_current{
-	margin-left: 250px;
-}
-#error_permanent{
-	margin-left: 220px;
-}
-#error_gender{
-	margin-left: 250px;
-}
-#cap{
-width:75px;
 }
