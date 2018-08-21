@@ -1,9 +1,4 @@
-select {
-	margin-left:40px;
-    padding: 6px 20px;
-	border: 1px solid black;
-    border-radius: 4px;
-}
+/*formatting in Date Of Birth field*/
 input[type=date] {
 	width:20%;
 	margin:2px 40px;
@@ -12,6 +7,8 @@ input[type=date] {
 	border: 1px solid black;
     box-sizing: border-box;
 }
+
+/*for Refresh captcha buttons*/
 input[type=button]
 {
 	width:10%;
@@ -22,9 +19,12 @@ input[type=button]
 	border-radius: 5px;
 	cursor: pointer;
 }
+
+/*when hover over submit button*/
 input[type=submit]:hover {
     background-color: #007c06;
 }
+/*submit button styles*/
 input[type=submit]
 {
 	width:20%;
@@ -35,17 +35,22 @@ input[type=submit]
 	border: none;
 	cursor: pointer;
 }
+
+/*to adjust labels*/
 .key{
 	margin-left:40px;	
 }
 
-.round:focus{
+/*when input-field is focussed*/
+.input-field:focus{
 background-color:#febfff;	
 }
-.round:hover{	
+/*when hover over input-fields*/
+.input-field:hover{	
     border: 1px solid red;
 }
-.round {
+/*format input-fields*/
+.input-field{
 	width:25%;
 	margin:2px 40px;
     padding: 12px 20px;
@@ -53,22 +58,24 @@ background-color:#febfff;
 	border: 1px solid black;
     box-sizing: border-box;
 }
-.addr:focus{
+/*when address-field is focussed*/
+.address-field:focus{
 background-color:#febfff;	
 }
-.addr:hover{
+/*when hover over address-fields*/
+.address-field:hover{
 	border-radius: 5px;
     border: 1px solid red;
-
 }
-
-.addr{
+/*format address-fields*/
+.address-field{
 	border-radius: 5px;
 	margin:2px 40px;
 	border: 1px solid black;
 	height: 75px; width:30%
 }
 
+/*body styles*/
 body{
 background-color:light blue;	
 background-size: cover;
@@ -77,39 +84,39 @@ margin-left:200px;
 margin-top:50px;
 }
 
+/*to show errors with red color*/
 .error {
   color: red;
   font-family: 'Varela Round', sans-serif;
 }
-h1{
+
+/*align header to center*/
+header{
 	text-align: center;
 }
+
+/*mark red * with mandatory fields*/
 .mandatory{
 	color: red;
 }
 
-  .label:before{
-     content:"*" ;
-     color:red   
-     }
-
-label.error {
-  color: red;
-font-family: 'Varela Round', sans-serif;
-}
-
+/*adjust male radio button*/
 #male{
 	margin-left: 25px;
 }
+/*adjust error field for current address*/
 #error_current{
 	margin-left: 250px;
 }
+/*adjust error field for permanent address*/
 #error_permanent{
 	margin-left: 220px;
 }
+/*adjust error field for gender*/
 #error_gender{
 	margin-left: 250px;
 }
+/*captcha input field*/
 #cap{
 width:75px;
 }
