@@ -1,67 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> Registration Form </title>
+	<title> Registration Form </title>
+		<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
           <!--             USED INLINE CSS          -->
 
 </head>
-<body style="background-image:url(hey.jpg);
-			 margin-left:200px;
+<body style="background-image:url(assets/images/hey.jpg);
+			 font-family: 'Varela Round', sans-serif;
+			 margin-left:100px;
 		   	 margin-top:50px;">
+			<header>
+				<h1 style="text-align:center"> Registration Form</h1>
+			</header><hr>
+
 	<h2>
 	<form action="#" method="put">
-		<fieldset>
-			<legend>Registration Form</legend>
+	
+<div style="width:250px; float:left" >
+	<span style="color:red;">*</span>
+	First Name
+</div>
+	<input type="text" name="first" style="border-radius: 5px;
+		border: 1px solid red; padding: 7px;" placeholder="enter first name" required><br><br>
+	
+<div style="width:250px; float:left" >
+	<span style="color:red;">*</span>
+	Last Name
+</div>
+	<input type="text" name="last" style="border-radius: 5px;
+		border: 1px solid red; padding: 7px;" placeholder="enter last name" required><br><br>
+	
+<div style="width:250px; float:left" >
+	<span style="color:red;">*</span>
+	Email
+</div>
+	<input type="email" name="email" style="border-radius: 5px;
+		border: 1px solid red; padding: 7px;" placeholder="enter your email" required><br><br>
+	
+<div style="width:250px; float:left" >	
+	<span style="color:red;">*</span>
+	Password
+</div>
+	<input type="password" name="password" style="border-radius: 5px;
+		border: 1px solid red; padding: 7px;" placeholder="min 8 characters" required><br><br>
 
-<span style="color:red;">*</span>
-First Name<input type="text" name="first" style="border-radius: 5px;
-    border: 1px solid red; padding: 10px; height: 1px; margin-left:10px; margin-left:10px;" placeholder="enter first name" required>
-	
-<span style="color:red;">*</span>
-Last Name<input type="text" name="last" style="border-radius: 5px;
-    border: 1px solid red; padding: 10px; height: 1px; margin-left:10px;" placeholder="enter last name" required><br><br>
-	
-<span style="color:red;">*</span>
-Email<input type="email" name="email" style="border-radius: 5px;
-    border: 1px solid red; padding: 10px; height: 1px; margin-left:10px;" placeholder="enter your email" required><br><br>
-	
-<span style="color:red;">*</span>
-Password<input type="password" name="password" style="border-radius: 5px;
-    border: 1px solid red; padding: 10px; height: 1px; margin-left:10px;" placeholder="min 8 characters" required><br><br>
-	
-<span style="color:red;">*</span>
-Confirm Password<input type="password" name="password" style="border-radius: 5px;
-    border: 1px solid red; padding: 10px; height: 1px; margin-left:10px;" placeholder="retype password " required><br><br>
-	
-<span style="color:red;">*</span>
-Gender<br>
-Male<input type="radio" name="Gender" value="Male" required>
-Female<input type="radio" name="Gender" value="Female" required><br><br>
+<div style="width:250px; float:left" >		
+	<span style="color:red;">*</span>
+	Confirm Password
+</div>
+	<input type="password" name="password" style="border-radius: 5px;
+		border: 1px solid red; padding: 7px;" placeholder="retype password " required><br><br>
 
-<span style="color:red;">*</span>
-Phone 1<input type="number" name="phone1" style="border-radius: 5px;
-    border: 1px solid red; padding: 10px; height: 1px; margin-left:10px;" placeholder="enter mobile number" required><br><br>
+<div style="width:250px; float:left" >	
+	<span style="color:red;">*</span>
+	Gender<br>
+</div>
+	<span style="color:transparent;">*</span>
+	Male<input type="radio" name="Gender" value="Male" required>
+	Female<input type="radio" name="Gender" value="Female" required><br><br>
 
-Phone 2<input type="number" name="phone2" style="border-radius: 5px;
-    border: 1px solid red; padding: 10px; height: 1px; margin-left:10px;" placeholder="alternate mobile number"><br><br>
+<div style="width:250px; float:left" >
+	<span style="color:red;">*</span>
+	Phone 1
+</div>
+	<input type="number" name="phone1" style="border-radius: 5px;
+		border: 1px solid red; padding: 7px;" placeholder="enter mobile number" required><br><br>
 
-<span style="color:red;">*</span>
-Address 1<br>
-<textarea rows="3" cols="40" style="border-radius: 5px;
-    border: 1px solid red; height: 50px;" placeholder="enter full address" required></textarea><br><br>
+<div style="width:250px; float:left" >
+		<span style="color:transparent;">*</span>
+	Phone 2
+</div>
+	<input type="number" name="phone2" style="border-radius: 5px;
+		border: 1px solid red; padding: 7px" placeholder="alternate mobile number"><br><br>
 
-Address 2<br>
-<textarea rows="3" cols="40" style="border-radius: 5px;
-    border: 1px solid red;  height: 50px;" placeholder="enter local address"></textarea><br><br>
+<div style="width:250px; float:left" >
+	<span style="color:red;">*</span>
+	Address 1<br>
+</div>
+	<textarea rows="3" cols="40" style="border-radius: 5px;
+		border: 1px solid red; padding:10px" placeholder="enter the address" required></textarea><br><br>
+
+<div style="width:250px; float:left" >
+		<span style="color:transparent;">*</span>
+	Address 2<br>
+</div>
+	<textarea rows="3" cols="40" style="border-radius: 5px;
+		border: 1px solid red; padding:10px" placeholder="enter address line 2"></textarea><br><br>
 	
-<span style="color:red;">*</span>
-City<input type="text" name="city" style="border-radius: 5px;
-    border: 1px solid red; padding: 10px; height: 1px; margin-left:10px;" placeholder="enter your city" required><br><br>
-	
-<span style="color:red;">*</span>
-State
+<div style="width:250px; float:left" >
+	<span style="color:red;">*</span>
+	City
+</div>
+	<input type="text" name="city" style="border-radius: 5px;
+		border: 1px solid red; padding: 7px;" placeholder="enter your city" required><br><br>
+
+<div style="width:250px; float:left" >		
+	<span style="color:red;">*</span>
+	State
+</div>
 	<select name="states" style="border-radius: 5px;
-							 border: 1px solid red; height: 30px; margin-left:10px;" required>
+							 border: 1px solid red; height: 30px;" required>
 		<option value="">------------Select State------------</option>
 		<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
 		<option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -100,10 +139,13 @@ State
 		<option value="West Bengal">West Bengal</option>
 	</select><br><br>
 
-<span style="color:red;">*</span>
-Country
+<div style="width:250px; float:left" >
+	<span style="color:red;">*</span>
+	Country
+</div>
 	<select name="countries" style="border-radius: 5px;
-								border: 1px solid red; height: 30px; margin-left:10px;" required>
+								border: 1px solid red; height: 30px;" required>
+		<option value="">------------Select Country------------</option>
 		<option value="United States">United States</option> 
 		<option value="United Kingdom">United Kingdom</option> 
 		<option value="Afghanistan">Afghanistan</option> 
@@ -122,15 +164,20 @@ Country
 		<option value="Thailand">Thailand</option> 
 	</select><br><br>
 
-Subscribe newsletter<br>
-Yes<input type="radio" name="newsletter" value="yes">
-NO<input type="radio" name="newsletter" value="no"><br><br>
+<div style="width:250px; float:left" >	
+	Subscribe newsletter<br>
+</div>
+	<span style="color:transparent;">*</span>
+	Yes<input type="radio" name="newsletter" value="yes">
+	No<input type="radio" name="newsletter" value="no"><br><br><br>
 
 	<input type="submit" value="Submit"style="width: 15%;background-color: green;
 											  color: white;padding: 14px 20px; border: none; cursor: pointer;">
-</fieldset>
 
 	</form>
-	</h2>
+	</h2><hr>
+		<footer>
+			<h3><pre>   © 2018 XYZ, Inc.       Contact Us       Terms         Privacy           About</pre></h3> 
+		</footer>
 </body>
 </html>
