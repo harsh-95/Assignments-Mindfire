@@ -148,6 +148,9 @@ function validatePassword(){
 			if(password.length < 8){
 			submit = showError('password',"Please have min 8 characters in Password");
 			}
+			else if(password.length > 19){
+			submit = showError('password',"Password length should be less than 20 characters");
+			}
 			else
 			{
 				if(!(regPass.test(password))){
@@ -346,8 +349,8 @@ function checkFreq(email){
 
 //function to generate Operands for Captcha
 function generateOperands(){
-	operand1 = Math.ceil(Math.random()*10);
-	operand2 = Math.ceil(Math.random()*10);  
+	operand1 = Math.ceil(Math.random()*100);
+	operand2 = Math.ceil(Math.random()*100);  
 	generateCaptcha(operand1,operand2,operatorValue);
 }
 
