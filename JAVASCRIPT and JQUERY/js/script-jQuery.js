@@ -184,21 +184,24 @@ function validatePhone(){
 function validatePassword(){
 	var submit = false;
 	var password = $("#password").val();
-	password = password.trim();
+		password = password.trim();
 		if(password ==''){
-		submit = showError('password',"Please fill Password");
+		submit = showError('password',"Please fill an alphanumeric Password");
 		}
 		else if(password.length < 8){
-		submit = showError('password',"Please have min 8 characters in Password");
+		submit = showError('password',"Please have min 8 characters in Password without end spaces");
+		}
+		else if(password.length > 19){
+		submit = showError('password',"Password length should be less than 20 characters");
 		}
 		else if((regNumber.test(password))){
-		submit = showError('password',"must have alphabets in password");
+		submit = showError('password',"password can't be only numerics");
 		}
 		else if((reg.test(password))){
-		submit = showError('password',"a numeric is must in password");
+		submit = showError('password',"password can't be only alphabets");
 		}
 		else if(!(regPass.test(password))){
-		submit = showError('password',"Please enter password in alphanumeric String");
+		submit = showError('password',"Password should be alphanumeric String");
 		}
 		else{
 		submit = isFieldCorrect("password");
