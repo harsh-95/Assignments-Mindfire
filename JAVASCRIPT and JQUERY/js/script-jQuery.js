@@ -11,12 +11,12 @@ var regPass = /[a-zA-Z0-9]*[0-9]+[a-zA-Z0-9]*/;
 //functions to be run on submit button to validate each input field  
 $('#submit').click(function() {
 
-			validateLastName(); validateMiddleName(); validateFirstName();validateEmail();
+				validateLastName(); validateMiddleName(); validateFirstName();validateEmail();
 			validatePassword();validatePhone();validateDOB(); validateGender(); validateCurrentAdress();
 			validatePermanentAddress(); validateCityName(); validateStateName(); validateZip();
   
 					//returns true only when all functions returns true
-			return  (validateLastName() && validateMiddleName() && validateFirstName() && validateEmail() && validatePassword()
+			return  (validateFirstName() && validateMiddleName() && validateLastName() && validateEmail() && validatePassword()
 					&& validatePhone() && validateDOB() && validateGender() && validateCurrentAdress() && validatePermanentAddress()
 					&& validateCityName() && validateStateName() && validateZip());
 })
@@ -85,9 +85,6 @@ function validateFirstName(){
 		else if(firstname.length < 3){
 			submit = showError('first',"First Name must have atleast 3 characters");
 		}
-		else if(firstname.length > 20){
-			submit = showError('first',"First Name can't have more than 20 characters");
-		}
 		else{
 			submit = isFieldCorrect("first");
 		}
@@ -123,9 +120,6 @@ function validateLastName(){
 		}
 		else if(lastname.length < 3){
 			submit = showError('last',"Last Name must have atleast 3 characters");
-		}
-		else if(lastname.length > 20){
-			submit = showError('last',"Last Name can't have more than 20 characters");
 		}
 		else{
 			submit = isFieldCorrect("last");
@@ -171,7 +165,7 @@ function validatePhone(){
 		if(phone ==''){
 			submit = showError('phone',"Please fill Phone number");
 		}
-		else if(phone.length < 10 || phone.length > 10){
+		else if(!(regNumber.test(phone)) || phone.length < 10){
 			submit = showError('phone',"Please enter a valid 10 digit mobile number");
 		}
 		else{
@@ -190,9 +184,6 @@ function validatePassword(){
 		}
 		else if(password.length < 8){
 			submit = showError('password',"Please have min 8 characters in Password without end spaces");
-		}
-		else if(password.length > 19){
-			submit = showError('password',"Password length should be less than 20 characters");
 		}
 		else if((regNumber.test(password))){
 			submit = showError('password',"password can't be only numerics");
@@ -283,9 +274,6 @@ function validateCityName(){
 		else if(city.length < 3){
 			submit = showError('city',"city must have atleast 3 characters");
 		}
-		else if(city.length > 20){
-			submit = showError('city',"city can't have more than 20 characters");
-		}
 		else{
 			 submit = isFieldCorrect("city");
 		}
@@ -305,9 +293,6 @@ function validateStateName(){
 		}
 		else if(state.length < 3){
 			submit = showError('state',"state must have atleast 3 characters");
-		}
-		else if(state.length > 20){
-			submit = showError('state',"state can't have more than 20 characters");
 		}
 		else{
 			submit = isFieldCorrect("state");
