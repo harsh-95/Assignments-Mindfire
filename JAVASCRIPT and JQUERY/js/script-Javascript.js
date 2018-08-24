@@ -1,52 +1,44 @@
 
-//variables for generating captcha
-var operand1 = 0,operand2 = 0,operatorValue = 0,result = 0,operator = "";
-
 //regular expressions for validations
-var regNumber = /^[0-9]+$/
+var regNumber = /^[0-9@]+$/
 var regAlphabets = /^[a-zA-Z]+$/;
 var regEmail= /\S+@\S+\.\S+/;
-var regPass = /[a-zA-Z]+[a-zA-Z]*[0-9]+[a-zA-Z0-9]*/;
+var regPass = /([A-Za-z]+.*[0-9]|[0-9]+.*[A-Za-z])[A-Za-z0-9]*/;
+var regAddress = /[a-zA-Z]+/
 
 
 //function validate() to check if any field value is invalid and 
 //called when submit button is pressed
 function validate()								 
 {
-	validateFirstName();  validateMiddleName();  validateLastName();
+	validateName('first');  validateMiddleName();  validateName('last');
 	validateEmail();  validatePhone();  validatePassword();  validateDOB();
-	validateCurrentAddress();  validatePermanentAddress();  validateCityName();
-	validateStateName();  validateZip();  validateCaptcha();  validateGender();
+	validateAddress('current');  validateAddress('permanent');  validateSelectField('country');
+	validateSelectField('state'); validateSelectField('city');
+	validateCaptcha();  validateGender();
 
-	return  (validateLastName() && validateMiddleName() && validateFirstName()
+	return  (validateName('first') && validateMiddleName() && validateName('last')
 				&& validateEmail() && validatePassword() && validatePhone() &&
-				validateDOB() && validateGender() &&  validateCurrentAddress() &&  
-				validatePermanentAddress() && validateCityName() && validateStateName() 
-				&& validateZip() && validateCaptcha() );
+				validateDOB() && validateGender() &&  validateAddress('current') &&  
+				validateAddress('permanent') && validateSelectField('country') && 
+				validateSelectField('state') && validateSelectField('city')
+				&& validateCaptcha() );
 
 }
 
-//for validating First Name
-function validateFirstName(){
+//for validating Name
+function validateName(field){
 	var submit = false;
-	var firstname = document.forms["form1"]["first"];
+	var fieldname = document.forms["form1"][field];
 	
-		if(firstname.value ==''){
-			submit = showError('first','Please fill first Name');
+		if(fieldname.value ==''){
+			submit = showError(field,'Please fill '+field+' Name');
 		}
-		else{ 
-			if((firstname.value.length < 3)){
-				submit = showMinLengthError('first','First Name');
-			}
-			else if((firstname.value.length > 20)){
-				submit = showMaxLengthError('first','First Name');
-			}
-			else{
-				submit = isFieldCorrect("first");
-			}
-			if(!(regAlphabets.test(firstname.value))){
-				submit = showError('first',"Please enter only alphabets in First Name");
-			}
+		else if(!(regAlphabets.test(fieldname.value))){
+			submit = showError(field,"Please enter only alphabets in "+field+" Name");
+		}
+		else{
+			submit = isFieldCorrect(field);
 		}
 		return submit;
 }
@@ -64,30 +56,8 @@ function validateMiddleName(){
 				submit = isFieldCorrect("middle");
 			}
 		}
-		return submit;
-}
-
-//for validating Last name
-function validateLastName(){
-	var submit = false;
-	var lastname = document.forms["form1"]["last"];
-	
-		if(lastname.value ==''){
-			submit = showError('last','Please fill Last Name');
-		}
-		else{ 
-			if((lastname.value.length < 3)){
-				submit = showMinLengthError('last','Last Name');
-			}
-			else if((lastname.value.length > 20)){
-				submit = showMaxLengthError('last','Last Name');
-			}
-			else{
-				submit = isFieldCorrect("last");
-			}
-			if(!(regAlphabets.test(lastname.value))){
-				submit = showError('last',"Please enter only alphabets in last Name");
-			}
+		else{
+			submit = isFieldCorrect("middle");
 		}
 		return submit;
 }
@@ -100,20 +70,13 @@ function validateEmail(){
 		if(email.value ==''){
 			submit = showError('email','Please fill email');
 		}
-		else
-		{	
-			if(!(regEmail.test(email.value))){
+		else{	
+			if(!(regEmail.test(email.value)) || (checkFreq(email.value) > 1)){
 				submit = showError('email',"Please enter email in proper format");
 			}
 			else{
-				if(checkFreq(email.value) > 1){
-					document.getElementById('error_email').innerHTML = "cannot have multiple @ character";
-					document.getElementById('email').setAttribute("style","background-color: #ff9999");
-				}
-				else{
-					submit = isFieldCorrect("email");
-				}
-		}
+				submit = isFieldCorrect("email");
+			}
 		}
 		return submit;
 }
@@ -123,10 +86,7 @@ function validatePhone(){
 	var submit = false;
 	var phone = document.forms["form1"]["phone"]; 
 	
-		if(phone.value ==''){
-			submit = showError('phone',"Please fill Phone number");
-		}
-		else if(phone.value.length < 10 || phone.value.length > 10){
+		if(!(regNumber.test(phone.value)) || phone.length < 10 || phone.value ==''){
 			submit = showError('phone',"Please enter a valid 10 digit mobile number");
 		}
 		else{
@@ -140,27 +100,19 @@ function validatePassword(){
 	var submit = false;
 	var password = document.forms["form1"]["password"]; 
 	password = password.value.trim();
+	
 		if(password ==''){
 			submit = showError('password',"Please fill Password");
 		}
 		else
 		{	
-			if(password.length < 8){
-				submit = showError('password',"Please have min 8 characters in Password");
+			if(!(regPass.test(password)) || password.length < 8){
+				submit = showError('password',"Password must be alphanumeric and min 8 characters");
 			}
-			else if(password.length > 19){
-				submit = showError('password',"Password length should be less than 20 characters");
+			else{
+				submit = isFieldCorrect("password");
 			}
-			else
-			{
-				if(!(regPass.test(password))){
-					submit = showError('password',"Please enter password in alphanumeric String");
-				}
-				else{
-					submit = isFieldCorrect("password");
-				}	
-			}
-		}
+		}			
 		return submit;
 }
 
@@ -195,99 +147,37 @@ function validateGender(){
 		return submit;
 }
 
-//for validating Current Address
-function validateCurrentAddress(){
+//for validating Address
+function validateAddress(field){
 	var submit = false;
-	var currentAddress = document.forms["form1"]["current"];
-	currentAddress = currentAddress.value.trim();
-		if(currentAddress ==''){
-			submit = showError('current',"Please fill current Address");
+	var addressField = document.forms["form1"][field];
+	addressField = addressField.value.trim();
+	
+		if(addressField ==''){
+			submit = showError(field,"Please fill "+field+" address");
+		}
+		else if(!regAddress.test(addressField)){
+			document.getElementById(field).value = addressField.replace(/\s+/g,' ');
+			submit = showError(field,"Please enter a valid "+field+" address");
 		}
 		else{
-			submit = isFieldCorrect("current");
+			document.getElementById(field).value = addressField.replace(/\s+/g,' ');
+			submit = isFieldCorrect(field);
 		}
 		return submit;
 }
 
-//for validating Peramanent Address
-function validatePermanentAddress(){
+//for validating country,state,city
+function validateSelectField(field){
 	var submit = false;
-	var permanentAddress = document.forms["form1"]["permanent"];
-	permanentAddress = permanentAddress.value.trim();
+	var selectedItem = document.forms["form1"][field];
 	
-		if(permanentAddress ==''){
-			submit = showError('permanent',"Please fill permanent Address");
+		if(selectedItem.value ==''){
+			submit = showError(field+'Id','Please select '+field);
 		}
 		else{
-			submit = isFieldCorrect("permanent");
-		}
-		return submit;
-}
-
-//for validating City
-function validateCityName(){
-	var submit = false;
-	var city1 = document.forms["form1"]["city"];
-	
-		if(city1.value ==''){
-			submit = showError('city','Please fill City Name');
-		}
-		else{ 
-			if((city1.value.length < 3)){
-				submit = showMinLengthError('city','City Name');
-			}
-			else if((city1.value.length > 20)){
-				submit = showMaxLengthError('city','City Name');
-			}
-			else{
-				submit = isFieldCorrect("city");
-			}
-			if(!(regAlphabets.test(city1.value))){
-				submit = showError('city',"Please enter only alphabets in City Name");
-			}
-		}
-		return submit;
-}
-
-//for validating State
-function validateStateName(){
-	var submit = false;
-	var state = document.forms["form1"]["state"];
-	
-		if(state.value ==''){
-			submit = showError('state','Please fill State Name');
-		}
-		else{ 
-			if((state.value.length < 3)){
-				submit = showMinLengthError('state','State Name');
-			}
-			else if((state.value.length > 20)){
-				submit = showMaxLengthError('state','State Name');
-			}
-			else{
-				submit = isFieldCorrect("state");
-			}
-			if(!(regAlphabets.test(state.value))){
-				submit = showError('state',"Please enter only alphabets in State Name");
-			}
-		}
-		return submit;
-}
-
-//for validating Zip Code
-function validateZip(){
-	var submit = false;
-	var zip = document.forms["form1"]["zip"];
-	
-		if(zip.value ==''){
-			submit = showError('zip','Please fill zip Code');
-		}
-		else if(zip.value.length < 6 || zip.value.length > 6){
-			submit = showError('zip',"Please enter a valid 6 digit zip code");
-		}
-		else{
-			submit = isFieldCorrect("zip");
-		}
+			submit = isFieldCorrect(field+'Id');
+		}	
 		return submit;
 }
 
@@ -315,20 +205,6 @@ function showError(field,message){
 		return false;
 }
 
-//for showing minimum length error
-function showMinLengthError(field, labelName){
-		document.getElementById("error_"+field).innerHTML = " a valid "+ labelName +" must have 3 characters atleast";
-		document.getElementById(field).setAttribute("style","background-color: #ff9999");
-		return false;
-}
-
-//for showing maximum length error
-function showMaxLengthError(field, labelName){
-		document.getElementById("error_"+field).innerHTML = labelName+" should have less than 20 characters ";
-		document.getElementById(field).setAttribute("style","background-color: #ff9999");
-		return false;
-}
-
 //for returning true for a valid entry
 function isFieldCorrect(field){
 		document.getElementById("error_"+field).innerHTML = "";
@@ -347,41 +223,28 @@ function checkFreq(email){
 	return count;
 }
 
-//function to generate Operands for Captcha
-function generateOperands(){
+//function to generate Captcha
+function generateCaptcha(){
 	operand1 = Math.ceil(Math.random()*100);
 	operand2 = Math.ceil(Math.random()*100);  
-	generateCaptcha(operand1,operand2,operatorValue);
-}
-
-//function to generate Operator for Captcha
-function generateOperator(){
 	operatorValue = (Math.ceil(Math.random()*10))%4;
-	generateCaptcha(operand1,operand2,operatorValue);
-}
 
-//function to generate Captcha
-function generateCaptcha(operand1,operand2,operatorValue){
-	var local_operand1 = operand1;
-	var local_operand2 = operand2;
-	var local_operatorValue = operatorValue;
-
-	if(local_operatorValue === 0){
+	if(operatorValue === 0){
 		operator = "+";
-		res= local_operand1 + local_operand2;
+		res= operand1 + operand2;
 	}
-	else if(local_operatorValue === 1){
+	else if(operatorValue === 1){
 		operator = "-";
-		res = local_operand1 - local_operand2;
+		res = operand1 - operand2;
 	}
-	else if(local_operatorValue === 2){
+	else if(operatorValue === 2){
 		operator = "*";
-		res = local_operand1 * local_operand2;
+		res = operand1 * operand2;
 	}
 	else{
 		operator = "/";
-		res = Math.floor(local_operand1/local_operand2);
+		res = Math.floor(operand1/operand2);
 	}
-		document.getElementById("show_captcha").innerHTML = local_operand1 + " " + operator +" " + local_operand2;
+		document.getElementById("show_captcha").innerHTML = operand1 + " " + operator +" " + operand2;
 }
 
