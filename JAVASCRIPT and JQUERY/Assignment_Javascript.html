@@ -5,9 +5,11 @@
 		<title>User Registration Form</title>
 		
 		<script src="js/script-Javascript.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://geodata.solutions/includes/countrystatecity.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/registration.css">
 	</head>
-<body onload="generateOperands();generateOperator();generateCaptcha(x,y,z);">
+<body onload="generateCaptcha();">
 
 	<header>
 		<h1> Registration Form</h1>
@@ -22,40 +24,40 @@
 		<span class="mandatory">*</span>  First Name
 	</span>
 </div>
-	<input type="text" class="input-field" id="first" name="first" onblur="validateFirstName()">
+	<input type="text" class="input-field" id="first" name="first" maxlength="20" onblur="validateName('first')">
 	<span class="error" id="error_first">  </span><br><br>
 <div class="key">
 	<span> Middle Name</span>
 </div>
-	<input type="text" class="input-field" id="middle" name="middle" onblur="validateMiddleName()">
+	<input type="text" class="input-field" id="middle" name="middle" maxlength="20" onblur="validateMiddleName()">
 	<span class="error" id="error_middle">  </span><br><br>
 <div class="key">
 	<span> 
 		<span class="mandatory">*</span>  Last Name
 	</span>
 </div>
-	<input type="text" class="input-field" id="last" name="last" onblur="validateLastName()">
+	<input type="text" class="input-field" id="last" name="last" maxlength="20" onblur="validateName('last')">
 	<span class="error" id="error_last">  </span><br><br><br>
 <div class="key">
 	<span> 
 		<span class="mandatory">*</span>  Email
 	</span>
 </div>
-	<input type="text" class="input-field" id="email" name="email" onblur="validateEmail()">
+	<input type="text" class="input-field" id="email" name="email" maxlength="30" onblur="validateEmail()">
 	<span class="error" id="error_email">  </span><br><br><br>
 <div class="key">
 	<span> 
 		<span class="mandatory">*</span>  Phone
 	</span>
 </div>
-	<input type="number" class="input-field" id="phone" name="phone" onblur="validatePhone()">
+	<input type="text" class="input-field" id="phone" name="phone" maxlength="10" onblur="validatePhone()">
 	<span class="error" id="error_phone">  </span><br><br><br>
 <div class="key">
 	<span> 
 		<span class="mandatory">*</span>  Password
 	</span>
 </div>
-	<input type="password" class="input-field" id="password" name="password" onblur="validatePassword()">
+	<input type="password" class="input-field" id="password" name="password" maxlength="20" onblur="validatePassword()">
 	<span class="error" id="error_password">  </span><br><br><br>
 <div class="key">
 	<span> 
@@ -72,10 +74,10 @@
 <br>
 <div class="key">
 		<span>  Male</span>
-		<input type="radio" name="gender" id="male" value="Male" name="gender">
+		<input type="radio" name="gender" id="male" value="Male" name="gender" onchange="validateGender()">
 		<span class="error" id="error_gender">  </span><br>
 		<span>  Female</span>
-		<input type="radio" name="gender" id="female" value="Female" name="gender">
+		<input type="radio" name="gender" id="female" value="Female" name="gender" onchange="validateGender()">
 </div><br><br>
 <div class="key">
 	<span> 
@@ -85,7 +87,7 @@
 	
 </div>
 
-	<textarea name="current" class="address-field" id="current" rows="4" cols="25" onblur="validateCurrentAddress()"></textarea><br><br><br>
+	<textarea name="current" class="address-field" id="current"  maxlength="150" onblur="validateAddress('current')"></textarea><br><br><br>
 <div class="key">
 	<span> 
 		<span class="mandatory">*</span>  Permanent Address
@@ -93,28 +95,34 @@
 	</span>
 </div>
 
-	<textarea name="permanent" class="address-field" id="permanent" rows="3" cols="40" onblur="validatePermanentAddress()"></textarea><br><br><br>
+	<textarea name="permanent" class="address-field" id="permanent" maxlength="150" onblur="validateAddress('permanent')"></textarea><br><br><br>
 <div class="key">
 	<span> 
-		<span class="mandatory">*</span>  City
+		<span class="mandatory">*</span>  Country
 	</span>
 </div>
-	<input type="text" class="input-field" id="city" name="city" onblur="validateCityName()">
-	<span class="error" id="error_city">  </span><br><br>
+	<select name="country" class="countries order-alpha" id="countryId" onchange="validateSelectField('country')">
+		<option value="">Select Country</option>
+	</select>
+	<span class="error" id="error_countryId">  </span><br><br>
 <div class="key">
 	<span> 
 		<span class="mandatory">*</span>  State
 	</span>
 </div>
-	<input type="text" class="input-field" id="state" name="state" onblur="validateStateName()">
-	<span class="error" id="error_state">  </span><br><br>
+	<select name="state" class="states order-alpha" id="stateId" onchange="validateSelectField('state')">
+		<option value="">Select State</option>
+	</select>
+	<span class="error" id="error_stateId">  </span><br><br>
 <div class="key">
 	<span> 
-		<span class="mandatory">*</span>  Zip Code
+		<span class="mandatory">*</span>  City
 	</span>
 </div>
-	<input type="number" class="input-field" id="zip" name="zip" onblur="validateZip()">
-	<span class="error" id="error_zip">  </span><br><br><br>
+	<select name="city" class="cities order-alpha" id="cityId" onchange="validateSelectField('city')">
+		<option value="">Select City</option>
+	</select>
+	<span class="error" id="error_cityId">  </span><br><br><br>
 <div class="key">
 	<span> Personal Interests (if any)</span><br><br>
 	Sports
@@ -130,8 +138,7 @@
 </div>
 <!-----Captcha------->
 <div class="key">Captcha
-	<input type="button" value="Refresh values" onclick="generateOperands()">
-	<input type="button" value="Refresh operator" onclick="generateOperator()">
+	<input type="button" value="Refresh Captcha" onclick="generateCaptcha()">
 </div>
 <div class="key">
 	<span>
