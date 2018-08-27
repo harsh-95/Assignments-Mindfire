@@ -3,8 +3,8 @@ $(document).ready(function() {
 
 //regular expressions for validations
 var regNumber = /^[0-9]+$/
-var reg = /^[a-zA-Z]+$/;
-var re = /\S+@\S+\.\S+/;
+var regAlphabets = /^[a-zA-Z]+$/;
+var regEmail = /^([A-Za-z0-9]+[.-]?[A-Za-z0-9]{1,})*@[A-Za-z0-9-]+(\.[a-zA-Z0-9]+)+$/;
 var regPass = /([A-Za-z]+.*[0-9]|[0-9]+.*[A-Za-z])[A-Za-z0-9]*/;
 var regAddress = /[a-zA-Z]+/
 
@@ -86,11 +86,8 @@ function validateRequiredName(field){
 		if(fieldname ==''){
 			submit = showError(field,"Please fill "+field+" name");
 		}
-		else if(!(reg.test(fieldname))){
+		else if(!(regAlphabets.test(fieldname))){
 			submit = showError(field,"Please enter only alphabets in "+field+" name");
-		}
-		else if(fieldname.length < 3){
-			submit = showError(field,field+" name must have atleast 3 characters");
 		}
 		else{
 			submit = isFieldCorrect(field);
@@ -104,7 +101,7 @@ function validateMiddleName(){
 	var middlename =$("#middle").val();
 	
 		if(middlename != ''){
-			if(!(reg.test(middlename))){
+			if(!(regAlphabets.test(middlename))){
 				submit = showError('middle',"Please enter only alphabets in middle name");
 			}
 			else{
@@ -125,7 +122,7 @@ function validateEmail(){
 		if(email ==''){
 			submit = showError('email','Please fill email');
 		}
-		else if((!(re.test(email))) || checkFreq(email) > 1){
+		else if((!(regEmail.test(email))) || checkFreq(email) > 1){
 			submit = showError('email',"Please enter email in proper format");
 		}
 		else{
@@ -169,10 +166,7 @@ function validatePassword(){
 		if(password ==''){
 			submit = showError('password',"Please fill Password");
 		}
-		else if(password.length < 8){
-			submit = showError('password',"Password must be alphanumeric and min 8 charaters");
-		}
-		else if(!(regPass.test(password))){
+		else if(!(regPass.test(password)) || password.length < 8){
 			submit = showError('password',"Password must be alphanumeric and min 8 charaters");
 		}
 		else{
