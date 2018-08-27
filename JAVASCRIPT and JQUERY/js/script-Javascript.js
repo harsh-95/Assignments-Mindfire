@@ -1,8 +1,8 @@
 
 //regular expressions for validations
-var regNumber = /^[0-9@]+$/
+var regNumber = /^[0-9]+$/
 var regAlphabets = /^[a-zA-Z]+$/;
-var regEmail= /\S+@\S+\.\S+/;
+var regEmail = /^([A-Za-z0-9]+[.-]?[A-Za-z0-9]{1,})*@[A-Za-z0-9-]+(\.[a-zA-Z0-9]+)+$/;
 var regPass = /([A-Za-z]+.*[0-9]|[0-9]+.*[A-Za-z])[A-Za-z0-9]*/;
 var regAddress = /[a-zA-Z]+/
 
@@ -32,10 +32,10 @@ function validateName(field){
 	var fieldname = document.forms["form1"][field];
 	
 		if(fieldname.value ==''){
-			submit = showError(field,'Please fill '+field+' Name');
+			submit = showError(field,'Please fill '+field+' name');
 		}
 		else if(!(regAlphabets.test(fieldname.value))){
-			submit = showError(field,"Please enter only alphabets in "+field+" Name");
+			submit = showError(field,"Please enter only alphabets in "+field+" name");
 		}
 		else{
 			submit = isFieldCorrect(field);
@@ -50,7 +50,7 @@ function validateMiddleName(){
 	
 		if(middlename.value != ''){
 			if(!(regAlphabets.test(middlename.value))){
-				submit = showError('middle',"Please enter only alphabets in Middle Name");
+				submit = showError('middle',"Please enter only alphabets in middle name");
 			}
 			else{
 				submit = isFieldCorrect("middle");
@@ -86,7 +86,7 @@ function validatePhone(){
 	var submit = false;
 	var phone = document.forms["form1"]["phone"]; 
 	
-		if(!(regNumber.test(phone.value)) || phone.length < 10 || phone.value ==''){
+		if(!(regNumber.test(phone.value)) || phone.value.length < 10 || phone.value ==''){
 			submit = showError('phone',"Please enter a valid 10 digit mobile number");
 		}
 		else{
@@ -102,7 +102,7 @@ function validatePassword(){
 	password = password.value.trim();
 	
 		if(password ==''){
-			submit = showError('password',"Please fill Password");
+			submit = showError('password',"Please fill password");
 		}
 		else
 		{	
@@ -122,7 +122,7 @@ function validateDOB(){
 	var dob = document.forms["form1"]["dob"]; 
 	
 		if(dob.value ==''){
-			submit = showError('dob',"Please fill dob");
+			submit = showError('dob',"Please fill dob properly");
 		}
 		else{
 			submit = isFieldCorrect("dob");
@@ -138,7 +138,7 @@ function validateGender(){
 
 		if((male.checked === false) && (female.checked === false)){
 			submit = false;		
-			document.getElementById("error_gender").innerHTML = "Please select a Gender";
+			document.getElementById("error_gender").innerHTML = "Please select a gender";
 		}
 		else{	
 			submit = true;
