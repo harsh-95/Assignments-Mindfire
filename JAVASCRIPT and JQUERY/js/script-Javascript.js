@@ -9,20 +9,21 @@ var regAddress = /[a-zA-Z]+/
 
 //function validate() to check if any field value is invalid and 
 //called when submit button is pressed
-function validate()								 
-{
-	validateName('first');  validateMiddleName();  validateName('last');
-	validateEmail();  validatePhone();  validatePassword();  validateDOB();
-	validateAddress('current');  validateAddress('permanent');  validateSelectField('country');
-	validateSelectField('state'); validateSelectField('city');
-	validateCaptcha();  validateGender();
+function validate(){
+	
+	var submitForm = true;
+			
+	var validateArray = [validateName('first'),  validateMiddleName(),  validateName('last'),
+						validateEmail(),  validatePhone(),  validatePassword(),  validateDOB(),
+						validateAddress('current'),  validateAddress('permanent'),  validateSelectField('country'),
+						validateSelectField('state'), validateSelectField('city'),validateCaptcha(),  validateGender()];
 
-	return  (validateName('first') && validateMiddleName() && validateName('last')
-				&& validateEmail() && validatePassword() && validatePhone() &&
-				validateDOB() && validateGender() &&  validateAddress('current') &&  
-				validateAddress('permanent') && validateSelectField('country') && 
-				validateSelectField('state') && validateSelectField('city')
-				&& validateCaptcha() );
+	for(i = 0 ; i < validateArray.length ; i++){
+			submitForm = submitForm && validateArray[i];
+		}
+
+	//returns true only when all functions returns true
+	return  (submitForm); 
 
 }
 
