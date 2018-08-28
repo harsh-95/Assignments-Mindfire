@@ -1,4 +1,4 @@
-//when the DOM is ready this code should run
+ //when the DOM is ready this code should run
 $(document).ready(function() {
 
 //regular expressions for validations
@@ -11,15 +11,18 @@ var regAddress = /[a-zA-Z]+/
 
 //functions to be run on submit button to validate each input field  
 $('#submit').click(function() {
+		var submitForm = true;
 	
-			validateRequiredName('first'); validateMiddleName(); validateRequiredName('last'); validateEmail();
-			validatePassword();validatePhone();validateDOB(); validateGender(); validateAddress('current');
-			validateAddress('permanent'); validateSelectField('country'); validateSelectField('state'); validateSelectField('city');
-  
-					//returns true only when all functions returns true
-			return  (validateRequiredName('first') && validateMiddleName() && validateRequiredName('last') && validateEmail() && validatePassword()
-					&& validatePhone() && validateDOB() && validateGender() && validateAddress('current') && validateAddress('permanent')
-					&& validateSelectField('country') && validateSelectField('state') && validateSelectField('city'));    
+		var validateArray = [validateRequiredName('first'), validateMiddleName(), validateRequiredName('last'), validateEmail(),
+			validatePassword(),validatePhone(),validateDOB(), validateGender(), validateAddress('current'),
+			validateAddress('permanent'), validateSelectField('country'), validateSelectField('state'), validateSelectField('city')];
+			
+			for(i = 0 ; i < validateArray.length ; i++){
+				submitForm = submitForm && validateArray[i];
+			}
+
+			//returns true only when all functions returns true
+			return  (submitForm);    
 				
 })
 
@@ -90,7 +93,7 @@ function validateRequiredName(field){
 			submit = showError(field,"Please enter only alphabets in "+field+" name");
 		}
 		else{
-			submit = isFieldCorrect(field);
+			submit = markFieldCorrect(field);
 		}
 		return submit;
 }
@@ -105,11 +108,11 @@ function validateMiddleName(){
 				submit = showError('middle',"Please enter only alphabets in middle name");
 			}
 			else{
-				submit = isFieldCorrect("middle");
+				submit = markFieldCorrect("middle");
 			}
 		}
 		else{
-				submit = isFieldCorrect("middle");
+				submit = markFieldCorrect("middle");
 			}
 		return submit;
 }
@@ -126,7 +129,7 @@ function validateEmail(){
 			submit = showError('email',"Please enter email in proper format");
 		}
 		else{
-			submit = isFieldCorrect("email");
+			submit = markFieldCorrect("email");
 		}
 		return submit;
 }
@@ -153,7 +156,7 @@ function validatePhone(){
 			submit = showError('phone',"Please enter a valid 10 digit mobile number");
 		}
 		else{
-			submit = isFieldCorrect("phone");
+			submit = markFieldCorrect("phone");
 		}
 		return submit;
 }
@@ -170,7 +173,7 @@ function validatePassword(){
 			submit = showError('password',"Password must be alphanumeric and min 8 charaters");
 		}
 		else{
-			submit = isFieldCorrect("password");
+			submit = markFieldCorrect("password");
 		}
 		return submit;
 }
@@ -184,7 +187,7 @@ function validateDOB(){
 			submit = showError('dob',"Please fill dob");
 		}
 		else{
-			submit = isFieldCorrect("dob");
+			submit = markFieldCorrect("dob");
 		}
 		return submit;
 }
@@ -221,7 +224,7 @@ function validateAddress(field){
 		}
 		else{
 			document.getElementById(field).value = addressField.replace(/\s+/g,' ');
-			submit = isFieldCorrect(field);
+			submit = markFieldCorrect(field);
 		}
 		return submit;
 }
@@ -235,7 +238,7 @@ function validateSelectField(field){
 			submit = showError(field+'Id','Please select a '+field);
 		}
 		else{
-			submit = isFieldCorrect(field+'Id');
+			submit = markFieldCorrect(field+'Id');
 		}
 		return submit;
 }
@@ -249,7 +252,7 @@ function showError(field,message){
 }
 
 //function to show that field is valid and return true
-function isFieldCorrect(field){
+function markFieldCorrect(field){
 		$("#error_"+field).text('');
 		$("#"+field).css("background-color", "white");
 		return true;
