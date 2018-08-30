@@ -2,10 +2,10 @@
 <html>
 	<head>
 		<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-		<title>User Registration Form</title>
+		<title>Registration Form</title>
 		
 		<script src="js/script-Javascript.js"></script>
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://geodata.solutions/includes/countrystatecity.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/registration.css">
 	</head>
@@ -19,141 +19,154 @@
 
 	<form name="form1" onsubmit="return validate()" action="#"  method="get">
 
-<div class="key">
-	<span> 
-		<span class="mandatory">*</span>  First Name
-	</span>
-</div>
-	<input type="text" class="input-field" id="first" name="first" maxlength="20" onblur="validateName('first')">
-	<span class="error" id="error_first">  </span><br><br>
-<div class="key">
-	<span> Middle Name</span>
-</div>
-	<input type="text" class="input-field" id="middle" name="middle" maxlength="20" onblur="validateMiddleName()">
-	<span class="error" id="error_middle">  </span><br><br>
-<div class="key">
-	<span> 
-		<span class="mandatory">*</span>  Last Name
-	</span>
-</div>
-	<input type="text" class="input-field" id="last" name="last" maxlength="20" onblur="validateName('last')">
-	<span class="error" id="error_last">  </span><br><br><br>
-<div class="key">
-	<span> 
-		<span class="mandatory">*</span>  Email
-	</span>
-</div>
-	<input type="text" class="input-field" id="email" name="email" maxlength="30" onblur="validateEmail()">
-	<span class="error" id="error_email">  </span><br><br><br>
-<div class="key">
-	<span> 
-		<span class="mandatory">*</span>  Phone
-	</span>
-</div>
-	<input type="text" class="input-field" id="phone" name="phone" maxlength="10" onblur="validatePhone()">
-	<span class="error" id="error_phone">  </span><br><br><br>
-<div class="key">
-	<span> 
-		<span class="mandatory">*</span>  Password
-	</span>
-</div>
-	<input type="password" class="input-field" id="password" name="password" maxlength="20" onblur="validatePassword()">
-	<span class="error" id="error_password">  </span><br><br><br>
-<div class="key">
-	<span> 
-		<span class="mandatory">*</span>  Date Of Birth
-	</span></span>
-</div>
-	<input type="date" id="dob" onblur="validateDOB()">
-	<span class="error" id="error_dob">  </span><br><br><br>
-<div class="key">
-	<span> 
-		<span class="mandatory">*</span>  Gender
-	</span>
-</div>
-<br>
-<div class="key">
-		<span>  Male</span>
-		<input type="radio" name="gender" id="male" value="Male" name="gender" onchange="validateGender()">
-		<span class="error" id="error_gender">  </span><br>
-		<span>  Female</span>
-		<input type="radio" name="gender" id="female" value="Female" name="gender" onchange="validateGender()">
-</div><br><br>
-<div class="key">
-	<span> 
-		<span class="mandatory">*</span>  Current Address
-		<span class="error" id="error_current">  </span>
-	</span>
-	
-</div>
+		<div class="key">
+			<span> 
+				<span class="mandatory">*</span>  First Name
+			</span>
+		</div>
+			<input type="text" class="input-field" id="first" name="first" maxlength="20" onblur="validateName('first')">
+			<span class="error" id="error_first">  </span><br><br>
+			
+		<div class="key">
+			<span> Middle Name</span>
+		</div>
+			<input type="text" class="input-field" id="middle" name="middle" maxlength="20" onblur="validateMiddleName()">
+			<span class="error" id="error_middle">  </span><br><br>
+			
+		<div class="key">
+			<span> 
+				<span class="mandatory">*</span>  Last Name
+			</span>
+		</div>
+			<input type="text" class="input-field" id="last" name="last" maxlength="20" onblur="validateName('last')">
+			<span class="error" id="error_last">  </span><br><br><br>
+			
+		<div class="key">
+			<span> 
+				<span class="mandatory">*</span>  Email
+			</span>
+		</div>
+			<input type="text" class="input-field" id="email" name="email" maxlength="30" onblur="validateEmail()">
+			<span class="error" id="error_email">  </span><br><br><br>
+			
+		<div class="key">
+			<span> 
+				<span class="mandatory">*</span>  Phone
+			</span>
+		</div>
+			<input type="text" class="input-field" id="phone" name="phone" maxlength="10" onblur="validatePhone()">
+			<span class="error" id="error_phone">  </span><br><br><br>
+			
+		<div class="key">
+			<span> 
+				<span class="mandatory">*</span>  Password
+			</span>
+		</div>
+			<input type="password" class="input-field" id="password" name="password" maxlength="20" onblur="validatePassword()">
+			<span class="error" id="error_password">  </span><br><br><br>
+			
+		<div class="key">
+			<span> 
+				<span class="mandatory">*</span>  Date Of Birth
+			</span></span>
+		</div>
+			<input type="date" id="dob" onblur="validateDOB()">
+			<span class="error" id="error_dob">  </span><br><br><br>
+			
+		<div class="key">
+			<span> 
+				<span class="mandatory">*</span>  Gender
+			</span>
+		</div><br>
 
-	<textarea name="current" class="address-field" id="current"  maxlength="150" onblur="validateAddress('current')"></textarea><br><br><br>
-<div class="key">
-	<span> 
-		<span class="mandatory">*</span>  Permanent Address
-		<span class="error" id="error_permanent">  </span>
-	</span>
-</div>
+		<div class="key">
+				<span>  Male</span>
+				<input type="radio" name="gender" id="male" value="Male" name="gender" onchange="validateGender()">
+				<span class="error" id="error_gender">  </span><br>
+				<span>  Female</span>
+				<input type="radio" name="gender" id="female" value="Female" name="gender" onchange="validateGender()">
+		</div><br><br>
 
-	<textarea name="permanent" class="address-field" id="permanent" maxlength="150" onblur="validateAddress('permanent')"></textarea><br><br><br>
-<div class="key">
-	<span> 
-		<span class="mandatory">*</span>  Country
-	</span>
-</div>
-	<select name="country" class="countries order-alpha" id="countryId" onchange="validateSelectField('country')">
-		<option value="">Select Country</option>
-	</select>
-	<span class="error" id="error_countryId">  </span><br><br>
-<div class="key">
-	<span> 
-		<span class="mandatory">*</span>  State
-	</span>
-</div>
-	<select name="state" class="states order-alpha" id="stateId" onchange="validateSelectField('state')">
-		<option value="">Select State</option>
-	</select>
-	<span class="error" id="error_stateId">  </span><br><br>
-<div class="key">
-	<span> 
-		<span class="mandatory">*</span>  City
-	</span>
-</div>
-	<select name="city" class="cities order-alpha" id="cityId" onchange="validateSelectField('city')">
-		<option value="">Select City</option>
-	</select>
-	<span class="error" id="error_cityId">  </span><br><br><br>
-<div class="key">
-	<span> Personal Interests (if any)</span><br><br>
-	Sports
-	<input type="checkbox" name="interests" value="Sports">
-	Books
-	<input type="checkbox" name="interests" value="Books">
-	Computer & Software
-	<input type="checkbox" name="interests" value="Computer & Software">
-	Fashion
-	<input type="checkbox" name="interests" value="Fashion">
-	Photography
-	<input type="checkbox" name="interests" value="Photography"><br><br>
-</div>
-<!-----Captcha------->
-<div class="key">Captcha
-	<input type="button" value="Refresh Captcha" onclick="generateCaptcha()">
-</div>
-<div class="key">
-	<span>
-		<h2 style="color:brown" id="show_captcha"></h2>Enter Answer
-	</span>
-	<span>
-	<input name="captcha" id="cap" class="input-field" onkeyup="validateCaptcha();">
-	<span class="error" id="error_cap">  </span>
-	</span>
-</div>
-<br><br>
-<!------------------->
-<div class="key">
-	<input type="submit"  value="Submit">
-</div>
+		<div class="key">
+			<span> 
+				<span class="mandatory">*</span>  Current Address
+				<span class="error" id="error_current">  </span>
+			</span>	
+		</div>
+			<textarea name="current" class="address-field" id="current"  maxlength="150" onblur="validateAddress('current')"></textarea><br><br><br>
+			
+		<div class="key">
+			<span> 
+				<span class="mandatory">*</span>  Permanent Address
+				<span class="error" id="error_permanent">  </span>
+			</span>
+		</div>
+			<textarea name="permanent" class="address-field" id="permanent" maxlength="150" onblur="validateAddress('permanent')"></textarea><br><br><br>
+			
+		<div class="key">
+			<span> 
+				<span class="mandatory">*</span>  Country
+			</span>
+		</div>
+			<select name="country" class="countries order-alpha" id="countryId" onchange="validateSelectField('country')">
+				<option value="">Select Country</option>
+			</select>
+				<span class="error" id="error_countryId">  </span><br><br>
+			
+		<div class="key">
+			<span> 
+				<span class="mandatory">*</span>  State
+			</span>
+		</div>
+			<select name="state" class="states order-alpha" id="stateId" onchange="validateSelectField('state')">
+				<option value="">Select State</option>
+			</select>
+				<span class="error" id="error_stateId">  </span><br><br>
+			
+		<div class="key">
+			<span> 
+				<span class="mandatory">*</span>  City
+			</span>
+		</div>
+			<select name="city" class="cities order-alpha" id="cityId" onchange="validateSelectField('city')">
+				<option value="">Select City</option>
+			</select>
+				<span class="error" id="error_cityId">  </span><br><br><br>
+			
+		<div class="key">
+			<span> Personal Interests (if any)</span><br><br>
+			Sports
+			<input type="checkbox" name="interests" value="Sports">
+			Books
+			<input type="checkbox" name="interests" value="Books">
+			Computer & Software
+			<input type="checkbox" name="interests" value="Computer & Software">
+			Fashion
+			<input type="checkbox" name="interests" value="Fashion">
+			Photography
+			<input type="checkbox" name="interests" value="Photography"><br><br>
+		</div>
+
+		<!-----Captcha------->
+		<div class="key">Captcha
+			<input type="button" value="Refresh Captcha" onclick="generateCaptcha()">
+		</div>
+
+		<div class="key">
+			<span>
+				<h2 style="color:brown" id="show_captcha"></h2>Enter Answer
+			</span>
+			<span>
+			<input name="captcha" id="cap" class="input-field" onkeyup="validateCaptcha();">
+			<span class="error" id="error_cap">  </span>
+			</span>
+		</div><br><br>
+		<!------------------->
+
+		<div class="key">
+			<input type="submit"  value="Submit">
+		</div>
+
 	</form>
 	</h3>
 	<hr>
