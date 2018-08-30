@@ -9,9 +9,9 @@
 2.		SELECT e.ntEmpID, e.vcName,e.vcMobieNumer
 		FROM tblEmp AS e;
 
-3.		IF ((SELECT DISTINCT ntLevel FROM tblEmp WHERE vcMobieNumer IS NULL AND ntLevel=1) >0)
+3.		IF (EXISTS(SELECT * FROM tblEmp WHERE vcMobieNumer IS NULL AND ntLevel = 1))
 		BEGIN
-		   SELECT * FROM tblEmp WHERE vcMobieNumer IS NULL AND ntLevel=1
+			SELECT * FROM tblEmp WHERE vcMobieNumer IS NULL AND ntLevel=1
 		END
 		ELSE
 		BEGIN
@@ -80,42 +80,53 @@
 
 
 
-9.		SELECT Firstname + ' ' + ISNULL(MiddleName,'') + ' '  + LastName AS FullName 
-		FROM Person.Address, Person.BusinessEntityAddress, Person.Person 
-		WHERE Address.AddressLine1 LIKE '%florida%'
-		AND BusinessEntityAddress.AddressID = Address.AddressID
-		AND Person.BusinessEntityID = BusinessEntityAddress.BusinessEntityID;
+9.		SELECT p.Firstname + ' ' + ISNULL(p.MiddleName,'') + ' '  + p.LastName AS FullName 
+		FROM Person.Address a, Person.BusinessEntityAddress ba, Person.Person p 
+		WHERE a.AddressLine1 LIKE '%florida%'
+		AND ba.AddressID = a.AddressID
+		AND p.BusinessEntityID = ba.BusinessEntityID;
 
 
 10.		SELECT CompanyName 
-		FROM Person.Person, Person.Company 
-	 	WHERE FirstName = 'James' 
-		AND MiddleName = 'D.' 
-		AND LastName = 'Kramer'
-		AND Person.BusinessEntityID = Company.BusinessEntityId;
+		FROM Person.Person p, Person.Company c 
+		WHERE p.FirstName = 'James' 
+		AND p.MiddleName = 'D.' 
+		AND p.LastName = 'Kramer'
+		AND p.BusinessEntityID = c.BusinessEntityId;
 
 11.		SELECT SalesOrderID,UnitPrice 
 		FROM Sales.SalesOrderDetail
 		WHERE OrderQty = 1;
 		
 		
-12.		SELECT Description 
-		FROM Production.ProductDescription, Production.ProductModelProductDescriptionCulture
-		WHERE ProductModelProductDescriptionCulture.CultureID = 'fr'
-		AND ProductDescription.ProductDescriptionID = ProductModelProductDescriptionCulture.ProductDescriptionID
-		AND ProductDescription.ProductDescriptionID = '736';		
+12.		SELECT pd.Description AS ProductDescription
+		FROM Production.ProductDescription pd, Production.ProductModelProductDescriptionCulture pmpdc, 
+			Production.Product p 
+		WHERE p.ProductModelID = pmpdc.ProductModelID
+		AND pmpdc.ProductDescriptionID = pd.ProductDescriptionID
+		AND pmpdc.CultureID = 'fr' 
+		AND p.ProductID = 736		
 		
 	
-13.		SELECT Name,OrderQty,ListPrice 
-		FROM Sales.Customer,Sales.Store,Sales.SalesOrderDetail,Production.ProductListPriceHistory
-		WHERE Customer.CustomerID = 635
-		AND Customer.ProductID = ProductListPriceHistory.ProductID;
+13.		SELECT sd.OrderQty,p.Name,plph.ListPrice
+		FROM Production.Product p, Sales.SalesOrderDetail sd, Production.ProductListPriceHistory plph,
+			Sales.Customer c, Sales.SalesOrderHeader sh
+		WHERE p.ProductID = sd.ProductID
+		AND sd.ProductID = plph.ProductID
+		AND sd.SalesOrderDetailID = sh.SalesOrderID
+		AND sh.CurrencyRateID = c.CustomerID
+		AND c.CustomerID = 635;
 
 	
-14.		SELECT COUNT(*) 
-		FROM Person.Address, Production.ProductSubcategory
-		WHERE Address.city = 'london'
-		AND ProductSubcategory.Name = 'Cranksets';	
+14.		SELECT COUNT(DISTINCT(sd.ProductID)) AS NumberOfProducts
+		FROM Sales.SalesOrderHeader sh, Person.Address a, Sales.SalesOrderDetail sd, 
+			Production.Product p, Production.ProductCategory pc 
+		WHERE a.AddressID = sh.ShipToAddressID
+		AND	sd.SalesOrderID = sh.SalesOrderID
+		AND	p.ProductID = sd.ProductID
+		AND	pc.ProductCategoryID = p.ProductsubCategoryID
+		AND	a.City = 'London' 
+		AND pc.Name = 'Cranksets'	
 	
 	
 15.		Char DataType
