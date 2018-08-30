@@ -6,7 +6,7 @@
 
 
 
-2.      SELECT e.ntEmpID, e.vcName,e.vcMobieNumer
+2.		SELECT e.ntEmpID, e.vcName,e.vcMobieNumer
 		FROM tblEmp AS e;
 
 3.		IF ((SELECT DISTINCT ntLevel FROM tblEmp WHERE vcMobieNumer IS NULL AND ntLevel=1) >0)
@@ -20,7 +20,7 @@
 
 
 
-4.      SELECT *,
+4.		SELECT *,
 		CASE 
 			WHEN vcSkills LIKE '%JavaScript%' THEN 1
 			ELSE 0
@@ -34,25 +34,25 @@
     
 		a. SELECT TOP(1) * FROM tblEmp 
 	
-Ans: 	It will return the top 'n' rows of the result set retrieved, 'n' being the number specified inside
+	Ans:	It will return the top 'n' rows of the result set retrieved, 'n' being the number specified inside
 		the Top clause.
 		For example, TOP(10) would return the top 10 rows of the full result set.
 		
 		b. SELECT TOP(SELECT 3/2) * FROM tblEmp 
 	
-Ans: 	It will return the top 'n' rows of the result set retrieved, 'n' being converted into integer first
+	Ans:	It will return the top 'n' rows of the result set retrieved, 'n' being converted into integer first
 		and specified inside the Top clause.
 		For example, TOP(10/3) would return the top (10/3) = 3 rows of the full result set.
 	
 		c. SELECT TOP(1) PERCENT * FROM tblEmp
 	
-Ans:	It will return the top rows of the result set retrieved based on percentage, 'n' being the percentage
+	Ans:	It will return the top rows of the result set retrieved based on percentage, 'n' being the percentage
 		specified inside the Top clause.
 		For example, TOP(10) PERCENT would return the top 10% rows of the full result set.
 		
 		d. SELECT TOP(1) WITH TIES * FROM tblEmp ORDER BY vcName
 	
-Ans: 	TOP clause is commonly used to get top required rows FROM a result set,also it can be used with
+	Ans:	TOP clause is commonly used to get top required rows FROM a result set,also it can be used with
 		WITH TIES clause, to retrieve all similar rows to base result set.	
 
 
@@ -62,32 +62,32 @@ Ans: 	TOP clause is commonly used to get top required rows FROM a result set,als
            
 		SELECT [vcName],[vcMobieNumer] FROM [dbo].[tblEmp] GROUP BY [vcName]
 
-Ans: 	The column names in SELECT clause and GROUP BY clause should be same.
+	Ans:	The column names in SELECT clause and GROUP BY clause should be same.
 		two ways to correct this query:
-	(a) Remove [vcMobieNumer] FROM SELECT clause
-	(b) Add [vcMobieNumer] into GROUP BY clause
+		(a) Remove [vcMobieNumer] FROM SELECT clause
+		(b) Add [vcMobieNumer] into GROUP BY clause
 
 
-7.      SELECT vcName,ntLevel  
+7.		SELECT vcName,ntLevel  
 		FROM tblEmp 
 		WHERE moSalary>(SELECT AVG(moSalary) FROM tblEmp);
 
 
 
-8.      SELECT COUNT(*) 
+8.		SELECT COUNT(*) 
 		FROM Person.Person 
 		WHERE Suffix != 'NULL';
 
 
 
-9.      SELECT Firstname + ' ' + ISNULL(MiddleName,'') + ' '  + LastName AS FullName 
+9.		SELECT Firstname + ' ' + ISNULL(MiddleName,'') + ' '  + LastName AS FullName 
 		FROM Person.Address, Person.BusinessEntityAddress, Person.Person 
 		WHERE Address.AddressLine1 LIKE '%florida%'
 		AND BusinessEntityAddress.AddressID = Address.AddressID
 		AND Person.BusinessEntityID = BusinessEntityAddress.BusinessEntityID;
 
 
-10.     SELECT CompanyName 
+10.		SELECT CompanyName 
 		FROM Person.Person, Person.Company 
 	 	WHERE FirstName = 'James' 
 		AND MiddleName = 'D.' 
@@ -99,26 +99,26 @@ Ans: 	The column names in SELECT clause and GROUP BY clause should be same.
 		WHERE OrderQty = 1;
 		
 		
-12.     SELECT Description 
+12.		SELECT Description 
 		FROM Production.ProductDescription, Production.ProductModelProductDescriptionCulture
 		WHERE ProductModelProductDescriptionCulture.CultureID = 'fr'
 		AND ProductDescription.ProductDescriptionID = ProductModelProductDescriptionCulture.ProductDescriptionID
 		AND ProductDescription.ProductDescriptionID = '736';		
 		
 	
-13.     SELECT Name,OrderQty,ListPrice 
+13.		SELECT Name,OrderQty,ListPrice 
 		FROM Sales.Customer,Sales.Store,Sales.SalesOrderDetail,Production.ProductListPriceHistory
 		WHERE Customer.CustomerID = 635
 		AND Customer.ProductID = ProductListPriceHistory.ProductID;
 
 	
-14.     SELECT COUNT(*) 
+14.		SELECT COUNT(*) 
 		FROM Person.Address, Production.ProductSubcategory
 		WHERE Address.city = 'london'
 		AND ProductSubcategory.Name = 'Cranksets';	
 	
 	
-15.    	Char DataType
+15.		Char DataType
 		Char datatype which is used to store fixed length of characters. Suppose if we declared char(50)
 		it will allocates memory for 50 characters. Once we declare char(50) and insert only 10 characters
 		of word then only 10 characters of memory will be used and other 40 characters of memory will be wasted.
