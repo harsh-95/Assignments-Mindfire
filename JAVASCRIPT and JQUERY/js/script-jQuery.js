@@ -4,7 +4,7 @@ $(document).ready(function() {
 //regular expressions for validations
 var regNumber = /^[0-9]+$/
 var regAlphabets = /^[a-zA-Z]+$/;
-var regEmail = /^([A-Za-z0-9]+[.-]?[A-Za-z0-9]{1,})*@[A-Za-z0-9-]+(\.[a-zA-Z0-9]+)+$/;
+var regEmail = /^([A-Za-z0-9]+([.-]?[A-Za-z0-9])*)*@[A-Za-z0-9-]+(\.[a-zA-Z0-9]+)+$/;
 var regPass = /([A-Za-z]+.*[0-9]|[0-9]+.*[A-Za-z])[A-Za-z0-9]*/;
 var regAddress = /[a-zA-Z]+/
 
