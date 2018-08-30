@@ -1,30 +1,32 @@
 															ANSWERS TO DATABASE ASSIGNMENT		
 															
-1.		select COUNT(*)as TotalEmployees ,min(moSalary) as MinSalary,
-		count(distinct ntLevel) as Total_Distinct_ntLevel from tblEmp;
+1.		SELECT COUNT(*) AS TotalEmployees, MIN(moSalary) AS MinSalary,
+		COUNT(distinct ntLevel) AS Total_Distinct_ntLevel 
+		FROM tblEmp;
 
 
 
-2.      SELECT E.[ntEmpID], E.[vcName],E.[vcMobieNumer]
-		FROM tblEmp as E;
+2.      SELECT e.ntEmpID, e.vcName,e.vcMobieNumer
+		FROM tblEmp AS e;
 
-3.		IF ((select distinct ntLevel from tblEmp where vcMobieNumer is null AND ntLevel=1) >0)
+3.		IF ((SELECT DISTINCT ntLevel FROM tblEmp WHERE vcMobieNumer IS NULL AND ntLevel=1) >0)
 		BEGIN
-		   select * from tblEmp where vcMobieNumer is null AND ntLevel=1
+		   SELECT * FROM tblEmp WHERE vcMobieNumer IS NULL AND ntLevel=1
 		END
 		ELSE
 		BEGIN
-			select * from tblEmp where ntLevel=0
+			SELECT * FROM tblEmp WHERE ntLevel=0
 		END
 
 
 
-4.       select *
-		,case when vcSkills like '%JavaScript%' then 1
-         
-		end as [priority]
-		from tblEmp 
-		order by [priority] desc;
+4.      SELECT *,
+		CASE 
+			WHEN vcSkills LIKE '%JavaScript%' THEN 1
+			ELSE 0
+		END AS priority
+		FROM tblEmp 
+		ORDER BY priority DESC;
 
 
 
@@ -32,75 +34,87 @@
     
 		a. SELECT TOP(1) * FROM tblEmp 
 	
-Ans: It will return the top 'n' rows of the result set retrieved, 'n' being the number specified inside
-	the Top clause.
+Ans: 	It will return the top 'n' rows of the result set retrieved, 'n' being the number specified inside
+		the Top clause.
 		For example, TOP(10) would return the top 10 rows of the full result set.
 		
 		b. SELECT TOP(SELECT 3/2) * FROM tblEmp 
 	
-Ans: It will return the top 'n' rows of the result set retrieved, 'n' being converted into integer first
-	and specified inside the Top clause.
+Ans: 	It will return the top 'n' rows of the result set retrieved, 'n' being converted into integer first
+		and specified inside the Top clause.
 		For example, TOP(10/3) would return the top (10/3) = 3 rows of the full result set.
 	
 		c. SELECT TOP(1) PERCENT * FROM tblEmp
 	
-Ans: It will return the top rows of the result set retrieved based on percentage, 'n' being the percentage
-	specified inside the Top clause.
+Ans:	It will return the top rows of the result set retrieved based on percentage, 'n' being the percentage
+		specified inside the Top clause.
 		For example, TOP(10) PERCENT would return the top 10% rows of the full result set.
 		
 		d. SELECT TOP(1) WITH TIES * FROM tblEmp ORDER BY vcName
 	
-Ans: TOP clause is commonly used to get top required rows from a result set,also it can be used with
-	 WITH TIES clause, to retrieve all similar rows to base result set.	
+Ans: 	TOP clause is commonly used to get top required rows FROM a result set,also it can be used with
+		WITH TIES clause, to retrieve all similar rows to base result set.	
 
 
 
 
-6.		 When I executed this query:
+6.		When I executed this query:
            
-   SELECT [vcName],[vcMobieNumer] FROM [dbo].[tblEmp] GROUP BY [vcName]
+		SELECT [vcName],[vcMobieNumer] FROM [dbo].[tblEmp] GROUP BY [vcName]
 
-Ans: The column names in SELECT clause and GROUP BY clause should be same.
+Ans: 	The column names in SELECT clause and GROUP BY clause should be same.
 		two ways to correct this query:
-	(a) Remove [vcMobieNumer] from SELECT clause
-	(b) Add [vcMobieNumer] into GROUP By clause
+	(a) Remove [vcMobieNumer] FROM SELECT clause
+	(b) Add [vcMobieNumer] into GROUP BY clause
 
 
-7.      SELECT vcName,ntLevel  FROM tblEmp where moSalary>(select AVG(moSalary) from tblEmp) ;
-
-
-
-8.      select count(*) from Person.Person where Suffix != 'NULL';
+7.      SELECT vcName,ntLevel  
+		FROM tblEmp 
+		WHERE moSalary>(SELECT AVG(moSalary) FROM tblEmp);
 
 
 
-9.      SELECT Firstname + ' ' + ISNULL(MiddleName,'') + ' '  + LastName AS FullName
-		from Person.Person,Person.BusinessEntityAddress,Person.Address
-		where Person.BusinessEntityID = BusinessEntityAddress.BusinessEntityID
-		AND  BusinessEntityAddress.rowguid = Address.rowguid;
+8.      SELECT COUNT(*) 
+		FROM Person.Person 
+		WHERE Suffix != 'NULL';
 
 
-10.     SELECT CompanyName from Person.Person,Person.Company 
-	 	where FirstName = 'James'AND MiddleName = 'D.' AND LastName = 'Kramer'
+
+9.      SELECT Firstname + ' ' + ISNULL(MiddleName,'') + ' '  + LastName AS FullName 
+		FROM Person.Address, Person.BusinessEntityAddress, Person.Person 
+		WHERE Address.AddressLine1 LIKE '%florida%'
+		AND BusinessEntityAddress.AddressID = Address.AddressID
+		AND Person.BusinessEntityID = BusinessEntityAddress.BusinessEntityID;
+
+
+10.     SELECT CompanyName 
+		FROM Person.Person, Person.Company 
+	 	WHERE FirstName = 'James' 
+		AND MiddleName = 'D.' 
+		AND LastName = 'Kramer'
 		AND Person.BusinessEntityID = Company.BusinessEntityId;
 
-11.		select SalesOrderID,UnitPrice from Sales.SalesOrderDetail
-		where OrderQty = 1;
+11.		SELECT SalesOrderID,UnitPrice 
+		FROM Sales.SalesOrderDetail
+		WHERE OrderQty = 1;
 		
 		
-12.     select Description from Production.ProductDescription , Production.ProductModelProductDescriptionCulture
-		where ProductModelProductDescriptionCulture.CultureID = 'fr'
+12.     SELECT Description 
+		FROM Production.ProductDescription, Production.ProductModelProductDescriptionCulture
+		WHERE ProductModelProductDescriptionCulture.CultureID = 'fr'
 		AND ProductDescription.ProductDescriptionID = ProductModelProductDescriptionCulture.ProductDescriptionID
 		AND ProductDescription.ProductDescriptionID = '736';		
 		
 	
-13.     select Name,OrderQty,ListPrice from Sales.Customer,Sales.Store,Sales.SalesOrderDetail,Production.ProductListPriceHistory
-		where Customer.CustomerID = 635
+13.     SELECT Name,OrderQty,ListPrice 
+		FROM Sales.Customer,Sales.Store,Sales.SalesOrderDetail,Production.ProductListPriceHistory
+		WHERE Customer.CustomerID = 635
 		AND Customer.ProductID = ProductListPriceHistory.ProductID;
 
 	
-14.     select count(*) from Person.Address ,Production.ProductSubcategory
-		where Address.city = 'london'
+14.     SELECT COUNT(*) 
+		FROM Person.Address, Production.ProductSubcategory
+		WHERE Address.city = 'london'
 		AND ProductSubcategory.Name = 'Cranksets';	
 	
 	
