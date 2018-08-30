@@ -8,6 +8,8 @@
 
 2.		SELECT e.ntEmpID, e.vcName,e.vcMobieNumer
 		FROM tblEmp AS e;
+		
+		
 
 3.		IF (EXISTS(SELECT * FROM tblEmp WHERE vcMobieNumer IS NULL AND ntLevel = 1))
 		BEGIN
