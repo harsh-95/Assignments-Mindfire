@@ -39,7 +39,7 @@ function validateName(field){
 			submit = showError(field,"Please enter only alphabets in "+field+" name");
 		}
 		else{
-			submit = isFieldCorrect(field);
+			submit = markFieldCorrect(field);
 		}
 		return submit;
 }
@@ -54,11 +54,11 @@ function validateMiddleName(){
 				submit = showError('middle',"Please enter only alphabets in middle name");
 			}
 			else{
-				submit = isFieldCorrect("middle");
+				submit = markFieldCorrect("middle");
 			}
 		}
 		else{
-			submit = isFieldCorrect("middle");
+			submit = markFieldCorrect("middle");
 		}
 		return submit;
 }
@@ -76,7 +76,7 @@ function validateEmail(){
 				submit = showError('email',"Please enter email in proper format");
 			}
 			else{
-				submit = isFieldCorrect("email");
+				submit = markFieldCorrect("email");
 			}
 		}
 		return submit;
@@ -91,7 +91,7 @@ function validatePhone(){
 			submit = showError('phone',"Please enter a valid 10 digit mobile number");
 		}
 		else{
-			submit = isFieldCorrect("phone");
+			submit = markFieldCorrect("phone");
 		}
 		return submit;
 }
@@ -111,7 +111,7 @@ function validatePassword(){
 				submit = showError('password',"Password must be alphanumeric and min 8 characters");
 			}
 			else{
-				submit = isFieldCorrect("password");
+				submit = markFieldCorrect("password");
 			}
 		}			
 		return submit;
@@ -126,7 +126,7 @@ function validateDOB(){
 			submit = showError('dob',"Please fill dob properly");
 		}
 		else{
-			submit = isFieldCorrect("dob");
+			submit = markFieldCorrect("dob");
 		}
 		return submit;
 }
@@ -163,7 +163,7 @@ function validateAddress(field){
 		}
 		else{
 			document.getElementById(field).value = addressField.replace(/\s+/g,' ');
-			submit = isFieldCorrect(field);
+			submit = markFieldCorrect(field);
 		}
 		return submit;
 }
@@ -177,7 +177,7 @@ function validateSelectField(field){
 			submit = showError(field+'Id','Please select '+field);
 		}
 		else{
-			submit = isFieldCorrect(field+'Id');
+			submit = markFieldCorrect(field+'Id');
 		}	
 		return submit;
 }
@@ -194,7 +194,7 @@ function validateCaptcha(){
 			submit = showError('cap',"Wrong answer of Captcha.");
 		}
 		else{
-			submit = isFieldCorrect('cap');
+			submit = markFieldCorrect('cap');
 		}
 		return submit;
 }
@@ -207,7 +207,7 @@ function showError(field,message){
 }
 
 //for returning true for a valid entry
-function isFieldCorrect(field){
+function markFieldCorrect(field){
 		document.getElementById("error_"+field).innerHTML = "";
 		document.getElementById(field).setAttribute("style","background-color: white");
 		return true;
