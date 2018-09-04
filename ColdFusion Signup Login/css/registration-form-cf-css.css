@@ -1,0 +1,78 @@
+
+
+/*when hover over submit button*/
+input[type=submit]:hover {
+    background-color: #007c06;
+}
+/*submit button styles*/
+input[type=submit]
+{
+	width:25%;
+	background-color: #01b20a;
+	margin-left:40px;	
+	color: white;
+	border-radius: 10px;
+	padding: 14px 20px;
+	border: none;
+	cursor: pointer;
+}
+
+/*to adjust labels*/
+.key{
+	margin-left:30px;	
+	float: left;
+	width:105px;
+}
+
+/*when input-field is focussed*/
+.input-field:focus{
+background-color:#febfff;	
+}
+/*when hover over input-fields*/
+.input-field:hover{	
+    border: 1px solid red;
+}
+/*format input-fields*/
+.input-field{
+	width:40%;
+	margin:2px 40px;
+    padding: 4px 20px ;
+    border-radius: 5px;
+	border: 1px solid grey;
+    box-sizing: border-box;
+}
+
+/*body styles*/
+body{
+background-color:light blue;	
+background-size: cover;
+font-family: 'Varela Round', sans-serif;
+margin-top:50px;
+}
+
+/*to show errors with red color*/
+.error {
+  color: red;
+  margin-left: 185px;
+  font-size: 13px;
+  font-family: 'Varela Round', sans-serif;
+}
+
+/*align header to center*/
+.mid{
+	text-align: center;
+}
+
+/*mark red * with mandatory fields*/
+.mandatory{
+	color: red;
+}
+
+#full-form{
+	margin-left:390px;
+	width: 38%;
+}
+
+.loginerror{
+	color: red;
+}
