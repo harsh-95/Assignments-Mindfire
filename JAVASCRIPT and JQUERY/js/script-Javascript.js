@@ -20,6 +20,9 @@ function validate(){
 
 	for(i = 0 ; i < validateArray.length ; i++){
 			submitForm = submitForm && validateArray[i];
+			if(submitForm === false){
+				break;
+			}
 		}
 
 	//returns true only when all functions returns true
