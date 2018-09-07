@@ -21,25 +21,7 @@ $('#submit').click(function() {
 
 			//returns true only when all functions returns true
 			return submitForm; 
-		
-//ajax call      
-/*
-var data = $('#ajax-test').text();
-
-updateError();
-
-function updateError(){
-	var request = new XMLHttpRequest();
-	request.open("GET","Response2.cfm?id=4",true);
-	request.responseType = "text";
-	
-	request.onload = function(){
-		data = request.response;
-		$('#ajax-test').text(data);
-	};
-	request.send();
-}
-*/				
+					
 })
 
 
