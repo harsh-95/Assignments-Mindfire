@@ -2,7 +2,7 @@
 //regular expressions for validations
 var regNumber = /^[0-9]+$/
 var regAlphabets = /^[a-zA-Z]+$/;
-var regEmail = /^([A-Za-z0-9]+([.-]?[A-Za-z0-9])*)*@[A-Za-z0-9-]+(\.[a-zA-Z0-9]+)+$/;
+var regEmail = /^([A-Za-z0-9]+([.-]?[A-Za-z0-9])*)+@[A-Za-z0-9-]+(\.[a-zA-Z0-9]+)+$/;
 var regPass = /([A-Za-z]+.*[0-9]|[0-9]+.*[A-Za-z])[A-Za-z0-9]*/;
 var regAddress = /[a-zA-Z]+/
 
@@ -90,7 +90,7 @@ function validatePhone(){
 	var submit = false;
 	var phone = document.forms["form1"]["phone"]; 
 	
-		if(!(regNumber.test(phone.value)) || phone.value.length < 10 || phone.value ==''){
+		if(!( regNumber.test(phone.value)) || phone.value.length < 10 || phone.value =='' || phone.value =='0000000000'){
 			submit = showError('phone',"Please enter a valid 10 digit mobile number");
 		}
 		else{
@@ -110,8 +110,11 @@ function validatePassword(){
 		}
 		else
 		{	
-			if(!(regPass.test(password)) || password.length < 8){
-				submit = showError('password',"Password must be alphanumeric and min 8 characters");
+			if(password.length < 8){
+				submit = showError('password',"Please enter min 8 characters");
+			}
+			else if(!(regPass.test(password))){
+				submit = showError('password',"Password must be alphanumeric");
 			}
 			else{
 				submit = markFieldCorrect("password");
@@ -120,13 +123,17 @@ function validatePassword(){
 		return submit;
 }
 
-//for validating Date Of Birth
+//for validating Date Of Birth, year must be in between 1900 to 2010
 function validateDOB(){
 	var submit = false;
-	var dob = document.forms["form1"]["dob"]; 
-	
-		if(dob.value ==''){
-			submit = showError('dob',"Please fill dob properly");
+	var dob = document.forms["form1"]["dob"].value;
+			var d = new Date(Date.parse(dob));
+			var year = d.getFullYear();
+		if(dob ==''){
+			submit = showError('dob',"Please fill DOB properly");
+		}
+		else if(year < '1900' || year > '2010'){
+			submit = showError('dob',"Invalid DOB");
 		}
 		else{
 			submit = markFieldCorrect("dob");
