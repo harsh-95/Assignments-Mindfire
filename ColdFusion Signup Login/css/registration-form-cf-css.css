@@ -70,9 +70,73 @@ margin-top:50px;
 
 #full-form{
 	margin-left:390px;
-	width: 38%;
+	width: 40%;
 }
 
 .loginerror{
 	color: red;
 }
+
+.above-footer{
+	background-color: white;
+	width: 95%;
+	height: 10%;
+	padding: 50px 34px;
+}
+
+ul{
+	background-color: #333333;
+	overflow: hidden;
+	list-style-type: none;
+}
+li a{
+	display: block;
+	color: #a8aeb7;
+	padding: 14px 16px;
+	float: right;
+	text-decoration: none;
+}
+li a:hover{
+	color:white;	
+}
+li h3{
+	margin-left: 35px;
+	color: white;
+}
+li img{
+	width: 25px;
+	height: 25px;
+	float: left;
+}
+/*
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+}
+
+li a{
+	float: right;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+li a:hover {
+	background-color: #111;
+}*/
+#loginname{
+	float: left;
+	margin-left: 40px;
+	color: white;
+}
+#btnlogout{
+width: 15%;
+			}
