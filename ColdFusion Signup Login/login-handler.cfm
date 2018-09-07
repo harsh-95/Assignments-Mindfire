@@ -1,13 +1,5 @@
 <body>
 
-<!--->
-<cfif #form.email# EQ ''>
-<cfset session.err = 'Email is required'>
-<script>
-	window.location = "login.html";
-</script>
-</cfif>
---->
 	<cfquery name="fetch" datasource="cfdatasource">
 		SELECT * FROM signup WHERE Email = '#form.email#'
 	</cfquery>
