@@ -34,7 +34,8 @@ function validate(){
 function validateName(field){
 	var submit = false;
 	var fieldname = document.forms["form1"][field];
-	
+		fieldname.value = fieldname.value.trim();
+		
 		if(fieldname.value ==''){
 			submit = showError(field,'Please fill '+field+' name');
 		}
@@ -51,6 +52,7 @@ function validateName(field){
 function validateMiddleName(){
 	var submit = true;
 	var middlename = document.forms["form1"]["middle"];
+		middlename.value = middlename.value.trim();
 	
 		if(middlename.value != ''){
 			if(!(regAlphabets.test(middlename.value))){
@@ -69,7 +71,8 @@ function validateMiddleName(){
 //for validating Email
 function validateEmail(){
 	var submit = false;
-	var email = document.forms["form1"]["email"]; 
+	var email = document.forms["form1"]["email"];
+		email.value = email.value.trim();
 	
 		if(email.value ==''){
 			submit = showError('email','Please fill email');
@@ -104,36 +107,39 @@ function validatePassword(){
 	var submit = false;
 	var password = document.forms["form1"]["password"]; 
 	password = password.value.trim();
-	
+
 		if(password ==''){
 			submit = showError('password',"Please fill password");
 		}
-		else
-		{	
-			if(password.length < 8){
-				submit = showError('password',"Please enter min 8 characters");
-			}
-			else if(!(regPass.test(password))){
-				submit = showError('password',"Password must be alphanumeric");
-			}
-			else{
-				submit = markFieldCorrect("password");
-			}
-		}			
+		else if(!(regPass.test(password)) || password.length < 8){
+			submit = showError('password',"Password must be alphanumeric and min 8 charaters");
+		}
+		else{
+			submit = markFieldCorrect("password");
+		}		
 		return submit;
 }
 
 //for validating Date Of Birth, year must be in between 1900 to 2010
 function validateDOB(){
+	//fetch system date
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0
+	var yyyy = today.getFullYear();
+	
 	var submit = false;
+	//fetch selected date
 	var dob = document.forms["form1"]["dob"].value;
-			var d = new Date(Date.parse(dob));
-			var year = d.getFullYear();
+		var d = new Date(Date.parse(dob));
+		var day = d.getDate();
+		var month = d.getMonth()+1;
+		var year = d.getFullYear();
 		if(dob ==''){
 			submit = showError('dob',"Please fill DOB properly");
 		}
-		else if(year < '1900' || year > '2010'){
-			submit = showError('dob',"Invalid DOB");
+		else if(day > dd || month > mm || year > yyyy){
+			submit = showError('dob',"Invalid Date Of Birth");
 		}
 		else{
 			submit = markFieldCorrect("dob");
@@ -236,8 +242,8 @@ function checkFreq(email){
 
 //function to generate Captcha
 function generateCaptcha(){
-	operand1 = Math.ceil(Math.random()*100);
-	operand2 = Math.ceil(Math.random()*100);  
+	operand1 = Math.floor(Math.random()*100);
+	operand2 = Math.floor(Math.random()*100);  
 	operatorValue = (Math.ceil(Math.random()*10))%4;
 
 	if(operatorValue === 0){
@@ -254,7 +260,15 @@ function generateCaptcha(){
 	}
 	else{
 		operator = "/";
-		res = Math.floor(operand1/operand2);
+		var decimalValue = (operand1/operand2) - Math.floor(operand1/operand2);
+		if(decimalValue > 0){
+			remainderValue = operand1 % operand2;
+			operand1 = operand1 - remainderValue + operand2;
+			if(operand1 > 99){
+				operand1 = operand2;
+			}
+		}
+		res = (operand1/operand2);
 	}
 		document.getElementById("show_captcha").innerHTML = operand1 + " " + operator +" " + operand2;
 }
