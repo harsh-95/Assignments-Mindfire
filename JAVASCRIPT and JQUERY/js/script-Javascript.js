@@ -138,11 +138,29 @@ function validateDOB(){
 		if(dob ==''){
 			submit = showError('dob',"Please fill DOB properly");
 		}
-		else if(day > dd || month > mm || year > yyyy){
-			submit = showError('dob',"Invalid Date Of Birth");
-		}
 		else{
-			submit = markFieldCorrect("dob");
+			if(year === yyyy){
+					if(month === mm){
+							if(day > dd){
+								submit = showError('dob',"Invalid Date Of Birth");
+							}
+							else{
+								submit = markFieldCorrect("dob");
+							}
+					}
+					else if(month > mm){
+						submit = showError('dob',"Invalid Date Of Birth");
+					}
+					else{
+						submit = markFieldCorrect("dob");
+					}
+			}
+			else if(year > yyyy){
+				submit = showError('dob',"Invalid Date Of Birth");
+			}
+			else{
+				submit = markFieldCorrect("dob");
+			}
 		}
 		return submit;
 }
@@ -246,18 +264,22 @@ function generateCaptcha(){
 	operand2 = Math.floor(Math.random()*100);  
 	operatorValue = (Math.ceil(Math.random()*10))%4;
 
+	//addition
 	if(operatorValue === 0){
 		operator = "+";
 		res= operand1 + operand2;
 	}
+	//subtraction
 	else if(operatorValue === 1){
 		operator = "-";
 		res = operand1 - operand2;
 	}
+	//multiplication
 	else if(operatorValue === 2){
 		operator = "*";
 		res = operand1 * operand2;
 	}
+	//division
 	else{
 		operator = "/";
 		var decimalValue = (operand1/operand2) - Math.floor(operand1/operand2);
@@ -267,6 +289,9 @@ function generateCaptcha(){
 			if(operand1 > 99){
 				operand1 = operand2;
 			}
+		}
+		if(operand2 == 0){
+			operand2 = operand2 + 1;
 		}
 		res = (operand1/operand2);
 	}
