@@ -1,0 +1,369 @@
+
+body{
+	font-family: 'Varela Round', sans-serif;
+}
+ul{
+	background-color: #333333;
+	overflow: hidden;
+	list-style-type: none;
+}
+li a{
+	display: block;
+	color: #a8aeb7;
+	padding: 14px 16px;
+	float: right;
+	text-decoration: none;
+}
+li a:hover{
+	color:white;	
+}
+li h3{
+	margin-left: 35px;
+	color: white;
+}
+img{
+	width: 25px;
+	height: 25px;
+	float: left;
+}
+
+.container{
+	height: 140%;
+	width: 95%;
+	background-size: cover;
+	padding: 50px 34px;
+}
+.container-homepage{
+	height: 98%;
+	width: 100%;
+	background-size: cover;
+}
+
+img {
+    opacity: 0.9;
+}
+
+img:hover {
+    opacity: 2.0;
+}
+
+.category1{
+	margin: 0px 0px 0px 200px;
+}
+
+.category2{
+	margin: 0px 0px 0px 500px;
+}
+
+.category3{
+	margin: 0px 0px 0px 800px;
+}
+
+.category4{
+	margin: 250px 0px 0px 350px;
+}
+
+.category5{
+	margin: 250px 0px 0px 650px;
+}
+
+.category6{
+	margin: 250px 0px 0px 500px;
+}
+
+.categories{
+	height: 154px;
+	width: 218px;
+	background-size: cover;
+	border:2px solid #5aed5f;
+	border-radius: 5px;
+}
+
+.above-footer{
+	background-color: #025606;
+	width: 95%;
+	height: 30%;
+	padding: 50px 34px;
+}
+footer{
+	background-color: #333333;
+	color: white;
+	text-align: center;
+	padding: 10px 0px;
+}
+/***************************navigation bar*********************************/
+.navbar {
+    overflow: hidden;
+    background-color: black;
+ 	font-family: 'Varela Round', sans-serif;
+}
+
+.navbar .nav-right {
+    float: right;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    padding: 16px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: right;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 18px;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 16px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: yellow;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.nav-left{
+	float: left;
+	font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 18px 16px;
+    text-decoration: none;
+}
+
+/***************************form frame*********************************/
+		/*to format dropdown*/
+		select, input[type=search] {
+			padding: 8px 8px;
+			border: 1px solid #b8bdc1;
+			border-radius: 4px;
+			width: 80%;
+		}
+		
+		.select-field{
+			margin-left: 40px;
+			padding: 8px 8px;
+			border: 1px solid #b8bdc1;
+			border-radius: 4px;
+			width: 80%;
+		}
+
+		/*changes the color of submit button
+		  when mouse pointer hovers over it*/
+		input[type=submit]:hover {
+			background-color: #007c06;
+		}
+		/*format submit button*/
+		input[type=submit], input[type=button]
+		{
+			width:20%;
+			background-color: #01b20a;
+			color: white;
+			border-radius: 10px;
+			padding: 10px 10px;
+			border: none;
+			cursor: pointer;
+		}
+		#cancel{
+			margin-left: 50px;
+			background-color: #f46542;
+		}
+
+		/*to adjust all labels*/
+		.label{
+			margin-left:40px;
+			color: black;
+		}
+		
+		/*to adjust buttons*/
+		.field-button{
+			margin-left:40px;
+		}
+
+		/*when an input field is focussed*/
+		.input-field:focus{
+			
+		}
+		/*when mouse pointer hovers over 
+		  an input field*/
+		.input-field:hover{	
+			border: 1px solid green;
+		}
+		/*to format all input fields*/
+		.input-field {
+			width:80%;
+			margin:2px 40px;
+			padding: 8px 8px;
+			border-radius: 5px;
+			border: 1px solid #b8bdc1;
+			box-sizing: border-box;
+		}
+
+		/*set margins, fonts
+		body{
+		font-family: 'Varela Round', sans-serif;
+		margin-left:200px;
+		margin-top:50px;
+		}
+
+		/*to mark * before mandatory fields*/
+		.mandatory:before{
+			 content:"*" ;
+			 color:red   
+		}
+		.form1{
+		width: 40%;
+		background-color: white;
+		margin:0 400px;
+		border:2px solid #5aed5f;
+		border-radius: 5px;
+		font-size: 17px;
+		font-weight: bold;
+		}
+		.heading{
+		background-color:#5aed5f;
+		height:30px;
+		padding: 8px 10px;
+		}
+		.field{
+		margin-top: 10px;
+		}
+		
+
+		table{
+			table-layout: fixed; 
+			word-wrap:break-word;
+			border-collapse: collapse;
+			border: 1px solid red;
+			background-color: white;
+		}
+
+		.btn-edit,.btn-issue{
+			color: white;
+			text-decoration: none;
+			background-color: #478bf7;
+			border: none;
+			font-size: 13px;
+			border-radius: 5px;
+			padding: 8px 18px;
+			cursor: pointer;
+		}
+		.btn-edit:hover{
+			background-color: #0a56ce;
+		}
+		.btn-delete{
+			color: white;
+			text-decoration: none;
+			background-color: #ef5f5f;
+			border: none;
+			font-size: 13px;
+			border-radius: 5px;
+			padding: 8px 15px;
+			cursor: pointer;
+		}
+		.btn-delete:hover{
+			background-color: #ed1212;
+		}
+		.btn-dash {
+			border: none;
+			background: #286800;
+			color: #f2f2f2;
+			padding: 10px 40px;
+			font-size: 18px;
+			border-radius: 5px;
+			position: relative;
+			box-sizing: border-box;
+			cursor: pointer;
+			transition: all 500ms ease; 
+			transform-style: preserve-3d;
+		}
+		.btn-dash:after {
+			top: -100%;
+			left: 0px;
+			width: 100%;
+			padding: 10px 0px;
+			position: absolute;
+			background: #286800;
+			border-radius: 5px;
+			content: 'Dashboard';
+			cursor: pointer;			
+			transform-origin: left bottom;
+			transform: rotateX(90deg);
+		}
+		.btn-dash:hover {
+			transform-origin: center bottom;
+			transform: rotateX(-90deg) translateY(100%);
+		}
+
+		#logout{
+			color: white;
+			margin: 10px 10px;
+			text-decoration: none;
+			background-color: #ef5f5f;
+			border: none;
+			font-size: 15px;
+			border-radius: 5px;
+			padding: 9px 15px;
+			cursor: pointer;
+		}
+		#logout:hover{
+			background-color: #ed1212;
+		}
+		#forgot{
+			margin-left: 100px;
+		}
+		#book-success{
+			text-align:center;
+			color: #ffc987;
+			font-size:25px;
+		}
+		.show-msg{
+			color: yellow;
+			text-align: center;
+		}
+		.footer{
+			font-size: 17px;
+			font-weight: bold;
+		}
+		/*search bar of data table */ 
+		tfoot input {
+			width: 100%;
+			padding: 3px;
+			box-sizing: border-box;
+		}
+		.error{
+			color: red;
+			margin-left: 40px;
+			font-size: 13px;
+			font-family: 'Noto Serif KR', sans-serif;
+		}
