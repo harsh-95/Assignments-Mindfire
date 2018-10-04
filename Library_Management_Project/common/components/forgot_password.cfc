@@ -1,5 +1,5 @@
 
-<cfcomponent displayname="validateAndSelectUrl" accessors=true output=false persistent=false >
+<cfcomponent displayname="createNewPasswordComponent" output=false >
 
 
 	<cffunction name="sendOTP" output="false" access="remote" returntype="boolean" returnformat="JSON">

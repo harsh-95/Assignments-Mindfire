@@ -40,11 +40,11 @@
 			        <tbody>
 			            <cfoutput query="Users">
 							<tr>
-								<td>#Name#</td>
-								<td>#Email#</td>
-								<td>#Mobile#</td>
-								<td>#Address#</td>
-								<td>#DateFormat(Registration_date)#</td>
+								<td align="center" >#Name#</td>
+								<td align="center" >#Email#</td>
+								<td align="center" >#Mobile#</td>
+								<td align="center" >#Address#</td>
+								<td align="center" >#DateFormat(Registration_date)#</td>
 							</tr>
 						</cfoutput>
 			        </tbody>

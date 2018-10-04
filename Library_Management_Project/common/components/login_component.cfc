@@ -1,5 +1,5 @@
 
-<cfcomponent displayname="validateAndSelectUrl" accessors=true output=false persistent=false >
+<cfcomponent displayname="validateTheUserLogin" output=false >
 
 	<cffunction name="validateUserLogin" output="false" access="remote" returntype="array" returnformat="jSON">
 		<cfargument name="loginId" type="string" required="true" />

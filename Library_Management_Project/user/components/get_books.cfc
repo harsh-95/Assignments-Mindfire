@@ -1,6 +1,6 @@
 
 
-<cfcomponent displayname="getTableData" accessors=true output=false persistent=false >
+<cfcomponent displayname="getTableDataForUsers" output=false >
 	<!---fetch books that are avialable and return an array of books--->
 	<cffunction name="getBooksToIssue" output="false" access="remote" returnformat="JSON" returntype="array">
 
@@ -10,7 +10,10 @@
 				SELECT b.title,b.isbn,b.author,b.category,b.price
 				FROM Books b
 				WHERE b.isbn
-				NOT IN (SELECT isbn FROM Books_Record WHERE Email_Id = '#SESSION.login_id#'AND Return_Date_Time IS NULL)
+				NOT IN (SELECT isbn
+						FROM Books_Record
+						WHERE Email_Id = <cfqueryparam cfsqltype="cf_sql_varchar" value="#SESSION.login_id#" />
+						AND Return_Date_Time IS NULL)
 				AND Available > 0
 				AND IsDeleted = 'no'
 			</cfquery>
@@ -61,7 +64,7 @@
 				WHERE Books.ISBN IN (
 									 SELECT ISBN
 									 FROM Books_Record
-									 WHERE Email_Id = '#SESSION.login_id#'
+									 WHERE Email_Id = <cfqueryparam cfsqltype="cf_sql_varchar" value="#SESSION.login_id#" />
 									 AND Return_Date_Time IS NULL
 									)
 			</cfquery>

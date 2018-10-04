@@ -35,20 +35,20 @@ $('#register').click(function(e) {
 			
 	//if all fields are valid		
 	if(submitForm){
-		alert('1');
+
 		$.ajax({
 		      type: "POST",
 		      url: "../../user/components/register_component.cfc?method=checkAlreadyRegistered",
 		      data: {email:email1},
 		      success: function(res){
-		    	  alert('2');
+
 		    	  res = JSON.parse(res);
 	
 	          			if(res){
 	          				$("h3.show-msg").text("This Email is already registered");
 	          			}
 	          			else{
-	          				alert('3');
+
 	          				$.ajax({
 	          			      type: "POST",
 	          			      url: "../../user/components/register_component.cfc?method=registerUser",

@@ -15,15 +15,7 @@
 
 		<div class="container" style="background-image: url('../assets/images/books.jpg');">
 
-			<cfif isDefined("URL.id")>
-				<cfif URL.id EQ 1>
-					<cfoutput><h3 class="show-msg">Successfully Registered. Your Login id is your Email id</h3></cfoutput>
-<!--- 			<cfelseif URL.id EQ 2>
-					<cfoutput><h3 class="show-msg">Incorrect Login_id</h3></cfoutput>
-				<cfelseif URL.id EQ 3>
-					<cfoutput><h3 class="show-msg">Incorrect Password</h3></cfoutput>--->
-				</cfif>
-			</cfif>
+
 			<h3 class="show-msg"></h3>
 			<div class="form1">
 				<div class="heading">

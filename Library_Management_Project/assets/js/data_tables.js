@@ -6,7 +6,11 @@ $(document).ready(function() {
     } );
  
     // DataTable
-    var table = $('#example').DataTable();
+    var table = $('#example').DataTable({
+        columnDefs: [
+            { width: 250, targets: 1 }
+        ]
+    });
      
     // Apply the search
     table.columns().every( function () {

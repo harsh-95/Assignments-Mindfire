@@ -15,12 +15,12 @@ function createBooksToIssue (){
 				"dataSrc" : ""
 			},
 			 "columnDefs": [
-			        { "width": "150px", "targets": 0 },
-			        { "width": "60px", "targets": 1 },
-			        { "width": "100px", "targets": 2 },
-			        { "width": "70px", "targets": 3 },
-			        { "width": "50px", "targets": 4 },
-			        { "width": "25px", "targets": 5 }
+			        { "width": "150px", "targets": 0, "className": "text-center" },
+			        { "width": "60px", "targets": 1, "className": "text-center" },
+			        { "width": "100px", "targets": 2, "className": "text-center" },
+			        { "width": "70px", "targets": 3, "className": "text-center" },
+			        { "width": "50px", "targets": 4, "className": "text-center" },
+			        { "width": "25px", "targets": 5, "className": "text-center" }
 			      ],
 			    columns: [
 			        { title: "Book Name" },
@@ -101,7 +101,7 @@ function confirmBookAction(action, isbnno){
 		console.log('ajax call');  
 		$.ajax({
 			  type: "POST",
-		      url: "../../user/components/issue_book.cfc?method=issueBook",
+		      url: "../../user/components/book_options.cfc?method=issueBook",
 		      data: {isbn:isbnno},
 		      success: function(res){
 		    	  res = JSON.parse(res);

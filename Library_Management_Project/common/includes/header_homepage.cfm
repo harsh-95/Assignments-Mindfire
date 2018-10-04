@@ -1,9 +1,8 @@
 		<header>
-			<b>LIBRARY MANAGEMENT STUDIO</b>
+			<b>LIBRARY MANAGEMENT PROJECT</b>
 		</header>
 
 		<div class="navbar">
-			<a class="nav-right" href="#home">Help</a>
 			<a class="nav-right" href="#news">Contact Us</a>
 			<a class="nav-right" href="#news">About</a>
 			<div class="dropdown">

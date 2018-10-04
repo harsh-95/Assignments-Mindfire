@@ -15,16 +15,16 @@ function createAllBooks(){
 				"dataSrc" : ""
 			},
 		    "columnDefs": [
-		        { "width": "150px", "targets": 0 },
-		        { "width": "70px", "targets": 1 },
-		        { "width": "100px", "targets": 2 },
-		        { "width": "70px", "targets": 3 },
-		        { "width": "35px", "targets": 4 },
-		        { "width": "55px", "targets": 5 },
-		        { "width": "29px", "targets": 6 },
-		        { "width": "100px", "targets": 7 },
-		        { "width": "40px", "targets": 8 },
-		        { "width": "40px", "targets": 9 }
+		        { "width": "150px", "targets": 0, "className": "text-center" },
+		        { "width": "70px", "targets": 1, "className": "text-center" },
+		        { "width": "100px", "targets": 2, "className": "text-center" },
+		        { "width": "70px", "targets": 3, "className": "text-center" },
+		        { "width": "35px", "targets": 4, "className": "text-center" },
+		        { "width": "55px", "targets": 5, "className": "text-center" },
+		        { "width": "29px", "targets": 6, "className": "text-center" },
+		        { "width": "100px", "targets": 7, "className": "text-center" },
+		        { "width": "40px", "targets": 8, "className": "text-center" },
+		        { "width": "40px", "targets": 9, "className": "text-center" }
 		      ],
 			    columns: [
 			        { title: "Book Name" },

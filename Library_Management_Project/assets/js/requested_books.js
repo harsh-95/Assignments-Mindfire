@@ -15,13 +15,13 @@ function fetchAllRequests(){
 				"dataSrc" : ""
 			},
 		    "columnDefs": [
-		        { "width": "80px", "targets": 0 },
-		        { "width": "70px", "targets": 1 },
-		        { "width": "80px", "targets": 2 },
-		        { "width": "100px", "targets": 3 },
-		        { "width": "140px", "targets": 4 },
-		        { "width": "90px", "targets": 5 },
-		        { "width": "30px", "targets": 6 }
+		        { "width": "80px", "targets": 0, "className": "text-center" },
+		        { "width": "70px", "targets": 1, "className": "text-center" },
+		        { "width": "80px", "targets": 2, "className": "text-center" },
+		        { "width": "100px", "targets": 3, "className": "text-center" },
+		        { "width": "140px", "targets": 4, "className": "text-center" },
+		        { "width": "90px", "targets": 5, "className": "text-center" },
+		        { "width": "30px", "targets": 6, "className": "text-center" }
 		      ],
 			    columns: [
 			        { title: "Book Name" },

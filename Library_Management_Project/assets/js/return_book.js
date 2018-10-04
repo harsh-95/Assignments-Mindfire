@@ -23,11 +23,11 @@ function createBooksToReturn (){
 			        { "width": "25px", "targets": 5 }
 			      ],
 			    columns: [
-			        { title: "Book Name", "searchable": true, "targets": 0},
-			        { title: "ISBN", "searchable": true, "targets": 1 },
-			        { title: "Author", "searchable": true, "targets": 2 },
-			        { title: "Category", "searchable": true, "targets": 3 },
-			        { title: "Price", "searchable": true, "targets": 4 },
+			        { title: "Book Name", "searchable": true, "targets": 0, "className": "text-center" },
+			        { title: "ISBN", "searchable": true, "targets": 1, "className": "text-center" },
+			        { title: "Author", "searchable": true, "targets": 2, "className": "text-center" },
+			        { title: "Category", "searchable": true, "targets": 3, "className": "text-center" },
+			        { title: "Price", "searchable": true, "targets": 4, "className": "text-center" },
 			        { title: "Action", searchable: false, render: function(data, type, full, meta){return returnBookcolumn();} }
 			        ]
 				});
@@ -98,7 +98,7 @@ function confirmBookAction(action, isbnno){
 					
 		$.ajax({
 		      type: "POST",
-		      url: "../../user/components/issue_book.cfc?method=returnBook",
+		      url: "../../user/components/book_options.cfc?method=returnBook",
 		      data: {isbn:isbnno},
 		      success: function(res){
 		    	  res = JSON.parse(res);

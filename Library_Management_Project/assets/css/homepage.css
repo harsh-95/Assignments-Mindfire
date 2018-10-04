@@ -71,6 +71,10 @@ img:hover {
 	margin: 250px 0px 0px 500px;
 }
 
+.text-center{
+	text-align: center;
+}
+
 .categories{
 	height: 154px;
 	width: 218px;

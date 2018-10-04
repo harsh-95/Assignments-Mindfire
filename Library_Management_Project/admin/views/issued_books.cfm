@@ -39,10 +39,10 @@
 			        <tbody>
 			            <cfoutput query="issuedBooks">
 							<tr>
-								<td>#ISBN#</td>
-								<td>#Email_id#</td>
-								<td>#Issue_Date_Time#</td>
-								<td>#Return_Date_Time#</td>
+								<td align="center" >#ISBN#</td>
+								<td align="center" >#Email_id#</td>
+								<td align="center" >#Issue_Date_Time#</td>
+								<td align="center" >#Return_Date_Time#</td>
 							</tr>
 						</cfoutput>
 			        </tbody>

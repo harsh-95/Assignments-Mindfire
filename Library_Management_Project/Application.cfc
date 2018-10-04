@@ -5,11 +5,11 @@
   --- author: harsh
   --- date:   9/22/18
   --->
-<cfcomponent displayname="Application" output="true" hint="Handle the application.">
+<cfcomponent displayname="Application" hint="Handle the application.">
 
 
     <!--- Set up the application. --->
-	<cfset THIS.name = "LibraryManagement333" />
+	<cfset THIS.name = "LibraryManagement4777" />
 	<cfset THIS.applicationTimeout = CreateTimeSpan(0, 0, 50, 0) />
 	<cfset THIS.datasource = "Library" />
 	<cfset THIS.sessionManagement = true />
@@ -20,7 +20,7 @@
     <cffunction name="OnApplicationStart" access="public" returntype="boolean" output="false"
 		hint="Fires when the application is first created.">
 
-		<cfset APPLICATION.loginService = CreateObject("component","user.components.login_service") />
+		<cfset APPLICATION.loginService = CreateObject("component","common.components.login_service") />
 
 		<cfset APPLICATION.getTableData = CreateObject("component","admin.components.get_table_data") />
 
@@ -122,7 +122,7 @@
 	</cffunction>
 
 
-<!---     <cffunction name="OnError" access="public" returntype="void" output="true"
+<!---    <cffunction name="OnError" access="public" returntype="void" output="true"
        		 hint="Fires when an exception occures that is not caught by a try/catch.">
 
         <!--- Define arguments. --->

@@ -1,5 +1,5 @@
 
-<cfcomponent displayname="manageBooks" accessors=true output=false persistent=false >
+<cfcomponent displayname="manageBooks" output=false >
 
 	<!---Add a book into the database--->
 	<cffunction name="addBook" output="false" access="remote" returntype="boolean" returnformat="JSON">
@@ -118,25 +118,29 @@
 
 
 	<!---Fetch the book to edit--->
-	<cffunction name="fetchBookToEdit" output="false" access="remote" returnType="query">
+	<cffunction name="fetchBookByIsbn" output="false" access="remote" returnType="query" returnformat="JSON">
 
 		<cfargument name="isbnn" type="numeric" required="true">
 
 		<cftry>
 			<!---fetch book details with given isbn--->
-			<cfquery name="fetchBookInfo">
-				SELECT title,isbn,author,category,total_books,price
+			<cfquery name="LOCAL.fetchBookInfo">
+				SELECT title,isbn,author,category,total_books,price,IsDeleted
 				FROM Books
 				WHERE isbn = <cfqueryparam cfsqltype="cf_sql_varchar" value="#ARGUMENTS.isbnn#">
 			</cfquery>
 
-			<cfreturn fetchBookInfo />
+			<cfreturn LOCAL.fetchBookInfo />
 
 			<cfcatch type="database" >
 				<!--- Log the errors. --->
 				<cflog file="LibraryProjectErrorLog" type="error"
-						text="Some error occurred in query fetchBookInfo, fnName: fetchBookToEdit  #cfcatch.Detail# #cfcatch.Message#" />
-				<cflocation url="../../error.cfm?errID=2" addtoken="no">
+						text="Some error occurred in query fetchBookInfo, fnName: fetchBookByIsbn  #cfcatch.Detail# #cfcatch.Message#" />
+				<!--- <cflocation url="../../error.cfm?errID=2" addtoken="no"> --->
+
+				<cfset LOCAL.emptyQuery = QueryNew("") />
+
+				<cfreturn LOCAL.emptyQuery />
 
 			</cfcatch>
 
@@ -165,7 +169,11 @@
 				<!--- Log the errors. --->
 				<cflog file="LibraryProjectErrorLog" type="error"
 						text="Some error occurred in query fetchBookInfo, fnName: fetchBookToAdd  #cfcatch.Detail# #cfcatch.Message#" />
-				<cflocation url="../../error.cfm?errID=2" addtoken="no">
+<!--- 				<cflocation url="../../error.cfm?errID=2" addtoken="no"> --->
+
+				<cfset LOCAL.emptyQuery = QueryNew("") />
+
+				<cfreturn LOCAL.emptyQuery />
 
 			</cfcatch>
 
@@ -176,7 +184,7 @@
 
 
 	<!---Check if book is already in database--->
-	<cffunction name="checkBookRecord" access="remote" output="false" returntype="array" returnformat="JSON">
+<!--- 	<cffunction name="checkBookRecord" access="remote" output="false" returntype="array" returnformat="JSON">
 
 		<cfargument name="isbn" type="string" required="true" />
 
@@ -193,7 +201,8 @@
 				<cflog file="LibraryProjectErrorLog" type="error"
 						text="Some error occurred in query fetchRecord, fnName: checkBookRecord  #cfcatch.Detail# #cfcatch.Message#" />
 
-						<cflocation url="../../error.cfm?errID=2" addtoken="no">
+						<!--- <cflocation url="../../error.cfm?errID=2" addtoken="no"> --->
+
 			</cfcatch>
 		</cftry>
 
@@ -208,7 +217,7 @@
 			<cfreturn [false] />
 		</cfif>
 
-	</cffunction>
+	</cffunction> --->
 
 
 

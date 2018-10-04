@@ -1,6 +1,6 @@
 
 
-<cfcomponent displayname="RegisterUserAndSendUrl" accessors=true output=false persistent=false >
+<cfcomponent displayname="RegisterUserComponent" output=false >
 
 	<!---function to check if user already registered--->
 	<cffunction name="checkAlreadyRegistered" access="remote" output="false" returntype="boolean" returnformat="JSON">
@@ -36,13 +36,16 @@
 
 	<!---function to register user and store its details in database--->
 	<cffunction name="registerUser" output="false" access="remote" returntype="boolean" returnformat="JSON">
+
 		<cfargument name="name" type="string" required="true" />
 		<cfargument name="email" type="string" required="true" />
 		<cfargument name="mobile" type="string" required="true" />
 		<cfargument name="password" type="string" required="true" />
 		<cfargument name="address" type="string" required="true" />
 
+		<!---generate a salt for the password--->
 		<cfset LOCAL.salt = Hash(GenerateSecretKey("AES"),"SHA-512") />
+		<!---hash the password and salt together--->
 		<cfset LOCAL.hashedPassword = Hash("#ARGUMENTS.password#&#LOCAL.salt#","SHA-512") />
 
 			<cftry>

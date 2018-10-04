@@ -1,5 +1,5 @@
 
-<cfcomponent displayname="getTableData" accessors=true output=false persistent=false >
+<cfcomponent displayname="getTableDataForAdmin" output=false >
 
 	<!---get all books from the database--->
 	<cffunction name="getBooks" output="false" access="remote" returnformat="JSON" returntype="array">

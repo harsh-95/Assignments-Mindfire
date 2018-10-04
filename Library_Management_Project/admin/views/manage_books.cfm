@@ -12,7 +12,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 		<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 		<script src="/assets/js/edit_delete_books.js"></script>
-		<script src="/assets/js/data_tables.js"></script>
 		<script src="/assets/js/logout.js"></script>
 
 	</head>
